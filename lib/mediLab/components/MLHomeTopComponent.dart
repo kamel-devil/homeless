@@ -32,7 +32,6 @@ class _MLHomeTopComponentState extends State<MLHomeTopComponent> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 240,
       width: context.width(),
       margin: const EdgeInsets.only(bottom: 16.0),
       decoration: boxDecorationWithRoundedCorners(
@@ -94,6 +93,7 @@ class _MLHomeTopComponentState extends State<MLHomeTopComponent> {
             margin: const EdgeInsets.only(right: 16.0, left: 16.0),
             transform: Matrix4.translationValues(0, 16.0, 0),
             alignment: Alignment.center,
+
             decoration: boxDecorationRoundedWithShadow(12),
             child: Wrap(
               alignment: WrapAlignment.center,
@@ -104,10 +104,11 @@ class _MLHomeTopComponentState extends State<MLHomeTopComponent> {
                   constraints: BoxConstraints(minWidth: context.width() * 0.25),
                   padding: const EdgeInsets.only(top: 20, bottom: 20.0),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Image.asset(e.image!, width: 28, height: 28, fit: BoxFit.fill),
+                     Image.asset(e.image!, width: 40, height: 35, fit: BoxFit.fill,color:Colors.redAccent ,),
                       8.height,
-                      Text(e.title.toString(), style: boldTextStyle(size: 12), textAlign: TextAlign.center),
+                      Text(e.title.toString(), style: boldTextStyle(size: 14,), textAlign: TextAlign.center,),
                     ],
                   ),
                 ).onTap(() {

@@ -4,7 +4,7 @@ import 'package:nb_utils/nb_utils.dart';
 import '../components/MLOrderSuccessComponent.dart';
 import '../utils/MLColors.dart';
 import '../utils/MLImage.dart';
-import 'MLDashboardScreen.dart';
+import 'home/MLDashboardScreen.dart';
 
 class MLConfirmOrderScreen extends StatefulWidget {
   static String tag = '/MLConfirmOrderScreen';

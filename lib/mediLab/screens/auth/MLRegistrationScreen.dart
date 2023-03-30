@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../components/MLCountryPIckerComponent.dart';
-import '../components/MLSocialAccountComponent.dart';
-import '../utils/MLColors.dart';
-import '../utils/MLCommon.dart';
-import '../utils/MLImage.dart';
-import '../utils/MLString.dart';
-import 'MLConfirmPhoneNumberScreen.dart';
+import '../../components/MLCountryPIckerComponent.dart';
+import '../../components/MLSocialAccountComponent.dart';
+import '../../utils/MLColors.dart';
+import '../../utils/MLCommon.dart';
+import '../../utils/MLImage.dart';
+import '../../utils/MLString.dart';
+import '../MLConfirmPhoneNumberScreen.dart';
 
 class MLRegistrationScreen extends StatefulWidget {
   static String tag = '/MLRegistrationScreen';

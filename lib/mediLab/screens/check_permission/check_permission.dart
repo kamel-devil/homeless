@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:homeless/mediLab/screens/MLLoginScreen.dart';
+import 'package:homeless/mediLab/screens/auth/MLLoginScreen.dart';
 
 
 import 'package:provider/provider.dart';

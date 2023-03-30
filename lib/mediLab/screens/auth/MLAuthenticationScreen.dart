@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../utils/MLColors.dart';
-import '../utils/MLCommon.dart';
-import '../utils/MLString.dart';
+import '../../utils/MLColors.dart';
+import '../../utils/MLCommon.dart';
+import '../../utils/MLString.dart';
 import 'MLLoginScreen.dart';
 
 class MLAuthenticationScreen extends StatefulWidget {

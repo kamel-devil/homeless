@@ -3,12 +3,12 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../components/MLCountryPIckerComponent.dart';
-import '../components/MLSocialAccountComponent.dart';
-import '../utils/MLColors.dart';
-import '../utils/MLImage.dart';
-import '../utils/MLString.dart';
-import 'MLDashboardScreen.dart';
+import '../../components/MLCountryPIckerComponent.dart';
+import '../../components/MLSocialAccountComponent.dart';
+import '../../utils/MLColors.dart';
+import '../../utils/MLImage.dart';
+import '../../utils/MLString.dart';
+import '../home/MLDashboardScreen.dart';
 import 'MLForgetPasswordScreen.dart';
 import 'MLRegistrationScreen.dart';
 
@@ -126,7 +126,7 @@ class _MLLoginScreenState extends State<MLLoginScreen> {
             margin: const EdgeInsets.only(top: 75),
             width: context.width(),
             child: Image.asset(
-              ml_ic_register_indicator!,
+              ml_ic_register_indicator,
               alignment: Alignment.center,
               width: 200,
               height: 200,

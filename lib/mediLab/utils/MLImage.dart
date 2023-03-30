@@ -1,4 +1,4 @@
-const String ml_ic_medilab_logo = 'images/mediLab/images/ml_medilabLogo.png';
+const String ml_ic_medilab_logo = 'images/mediLab/images/splash.png';
 
 const String ml_ic_register_indicator = 'images/mediLab/images/ml_loginindicator.png';
 

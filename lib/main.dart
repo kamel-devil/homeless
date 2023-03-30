@@ -3,7 +3,8 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'mediLab/screens/MLSplashScreen.dart';
+import 'mediLab/screens/auth/MLSplashScreen.dart';
+import 'mediLab/screens/home/MLDashboardScreen.dart';
 import 'mediLab/screens/order/applyfromsite.dart';
 import 'mediLab/screens/order/order.dart';
 import 'mediLab/screens/sponsorship_conditions/sponsorship_conditions.dart';
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Amiri',
           primarySwatch: Colors.blue,
           textTheme: TextTheme(titleMedium: GoogleFonts.abel())),
-      home: SponsorshipConditions(),
+      home: MLDashboardScreen(),
     );
   }
 }

@@ -5,7 +5,7 @@ import 'package:nb_utils/nb_utils.dart';
 import '../components/MLProfileFormComponent.dart';
 import '../utils/MLColors.dart';
 import '../utils/MLCommon.dart';
-import 'MLDashboardScreen.dart';
+import 'home/MLDashboardScreen.dart';
 
 
 class MLUpdateProfileScreen extends StatefulWidget {

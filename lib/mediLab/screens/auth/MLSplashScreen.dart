@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../utils/MLImage.dart';
+import '../../utils/MLImage.dart';
 import 'MLWalkThroughScreen.dart';
 
 
@@ -31,13 +31,15 @@ class _MLSplashScreenState extends State<MLSplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Image.asset(
-        ml_ic_medilab_logo!,
-        height: 150,
-        width: 150,
-        fit: BoxFit.fill,
-      ).center(),
+    return SafeArea(
+      child: Scaffold(
+        body: Image.asset(
+          ml_ic_medilab_logo!,
+          height: 300,
+          width: 150,
+          fit: BoxFit.fill,
+        ).center(),
+      ),
     );
   }
 }

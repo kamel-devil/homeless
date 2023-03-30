@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 // Light Theme Colors
-const appColorPrimary = Color(0xFF0A79DF);
-const appColorPrimaryDark = Color(0xFF0A79DF);
+const appColorPrimary = Colors.redAccent;
+const appColorPrimaryDark = Colors.redAccent;
 const appColorAccent = Color(0xFF03DAC5);
 const appTextColorPrimary = Color(0xFF212121);
 const iconColorPrimary = Color(0xFFFFFFFF);

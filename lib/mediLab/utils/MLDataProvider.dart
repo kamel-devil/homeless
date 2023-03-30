@@ -45,23 +45,21 @@ List<MLWalkThroughData> mlWalkThroughDataList() {
 
 List<MLServicesData> mlServiceDataList() {
   List<MLServicesData> list = [];
-  list.add(MLServicesData(title: 'Clinic Visit', icon: Icons.home_work_outlined, image: ml_ic_dashClinicVisit!, widget: MLBookAppointmentScreen(index: 0)));
-  list.add(MLServicesData(title: 'Home Visit', icon: Icons.home, image: ml_ic_dashHomeVisit, widget: MLBookAppointmentScreen(index: 0)));
-  list.add(MLServicesData(title: 'Video Consult', icon: Icons.video_call, image: ml_ic_dashVideoCons, widget: MLVideoConsultScreen()));
-  list.add(MLServicesData(title: 'Pharmacy', icon: Icons.local_hospital, image: ml_ic_dashPharmacy, widget: MLOnlinePharmacyScreen()));
-  list.add(MLServicesData(title: 'Diseases', icon: Icons.health_and_safety, image: ml_ic_dashDisease, widget: MLDiseaseScreen()));
-  list.add(MLServicesData(title: 'Covid-19', icon: Icons.supervised_user_circle_outlined, image: ml_ic_dashCovid, widget: MLCovidScreen()));
+  list.add(MLServicesData(title: 'زياره', icon: Icons.home_work_outlined, image: ml_ic_dashClinicVisit!, widget: MLBookAppointmentScreen(index: 0)));
+  list.add(MLServicesData(title: 'اكفل طفل', icon: Icons.home, image: ml_ic_dashHomeVisit, widget: MLBookAppointmentScreen(index: 0)));
+  list.add(MLServicesData(title: 'محادثه الاضفال', icon: Icons.video_call, image: ml_ic_dashVideoCons, widget: MLVideoConsultScreen()));
+  list.add(MLServicesData(title: 'الادويه', icon: Icons.local_hospital, image: ml_ic_dashPharmacy, widget: MLOnlinePharmacyScreen()));
+  list.add(MLServicesData(title: 'الامراض', icon: Icons.health_and_safety, image: ml_ic_dashCovid, widget: MLDiseaseScreen()));
+  list.add(MLServicesData(title: 'الاحصائيات', icon: Icons.supervised_user_circle_outlined, image: ml_ic_dashPharmacy, widget: MLCovidScreen()));
   return list;
 }
 
 List<MLDepartmentData> mlDepartmentDataList() {
   List<MLDepartmentData> list = [];
-  list.add(MLDepartmentData(image: ml_ic_department_one, title: 'General Care', subtitle: '647 Doctor'));
-  list.add(MLDepartmentData(image: ml_ic_department_two, title: 'Pediatrics', subtitle: '324 Doctor'));
-  list.add(MLDepartmentData(image: ml_ic_department_three, title: 'Cardiologic', subtitle: '647 Doctor'));
-  list.add(MLDepartmentData(image: ml_ic_department_one, title: 'General Care', subtitle: '647 Doctor'));
-  list.add(MLDepartmentData(image: ml_ic_department_two, title: 'Pediatrics', subtitle: '324 Doctor'));
-  list.add(MLDepartmentData(image: ml_ic_department_three, title: 'Cardiologic', subtitle: '647 Doctor'));
+  list.add(MLDepartmentData(image: ml_ic_department_one, title: 'التعليم', subtitle: ''));
+  list.add(MLDepartmentData(image: ml_ic_department_two, title: 'الرعايه', subtitle: '10 دكتور '));
+  list.add(MLDepartmentData(image: ml_ic_department_three, title: 'الانشطه', subtitle: '10 شئون '));
+  list.add(MLDepartmentData(image: ml_ic_department_one, title: 'شروط طلب كفاله', subtitle: ''));
   return list;
 }
 

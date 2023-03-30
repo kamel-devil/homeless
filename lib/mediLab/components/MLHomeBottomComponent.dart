@@ -50,13 +50,13 @@ class MLHomeBottomComponentState extends State<MLHomeBottomComponent> {
         ).paddingOnly(left: 16, right: 16),
         10.height,
         HorizontalList(
-          padding: EdgeInsets.only(right: 16.0, left: 8.0),
+          padding: const EdgeInsets.only(right: 16.0, left: 8.0),
           wrapAlignment: WrapAlignment.spaceEvenly,
           itemCount: departmentList.length,
           itemBuilder: (BuildContext context, int index) {
             return Container(
-              margin: EdgeInsets.only(top: 8, bottom: 8, left: 8),
-              padding: EdgeInsets.all(10),
+              margin: const EdgeInsets.only(top: 8, bottom: 8, left: 8),
+              padding: const EdgeInsets.all(10),
               decoration: boxDecorationRoundedWithShadow(12),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,12 +80,12 @@ class MLHomeBottomComponentState extends State<MLHomeBottomComponent> {
           ],
         ).paddingAll(16.0),
         HorizontalList(
-            padding: EdgeInsets.only(right: 16.0, left: 8.0),
+            padding: const EdgeInsets.only(right: 16.0, left: 8.0),
             wrapAlignment: WrapAlignment.spaceBetween,
             itemCount: tophospitalList.length,
             itemBuilder: (BuildContext context, int index) {
               return Container(
-                margin: EdgeInsets.only(bottom: 8, left: 8),
+                margin: const EdgeInsets.only(bottom: 8, left: 8),
                 decoration: boxDecorationRoundedWithShadow(12),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

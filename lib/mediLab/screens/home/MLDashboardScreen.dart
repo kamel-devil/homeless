@@ -2,12 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../components/MLBottomNavigationBarWidget.dart';
-import '../fragments/MLCalendarFragment.dart';
-import '../fragments/MLChatFragment.dart';
-import '../fragments/MLHomeFragment.dart';
-import '../fragments/MLNotificationFragment.dart';
-import '../fragments/MLProfileFragemnt.dart';
+import '../../components/MLBottomNavigationBarWidget.dart';
+import '../../fragments/MLCalendarFragment.dart';
+import '../../fragments/MLChatFragment.dart';
+import '../../fragments/MLHomeFragment.dart';
+import '../../fragments/MLNotificationFragment.dart';
+import '../../fragments/MLProfileFragemnt.dart';
 class MLDashboardScreen extends StatefulWidget {
   static String tag = '/MLDashboardScreen';
 

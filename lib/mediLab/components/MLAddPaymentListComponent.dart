@@ -14,7 +14,7 @@ class MLAddPaymentListComponent extends StatefulWidget {
 class MLAddPaymentListComponentState extends State<MLAddPaymentListComponent> {
   List<MLPaymentData> paymentData = mlPaymentDataList();
   int? selectedIndex = 0;
-  int _radioSelected = 1;
+  final int _radioSelected = 1;
 
   @override
   void initState() {
@@ -36,12 +36,12 @@ class MLAddPaymentListComponentState extends State<MLAddPaymentListComponent> {
     return ListView.builder(
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
-      physics: ScrollPhysics(),
+      physics: const ScrollPhysics(),
       itemCount: paymentData.length,
       itemBuilder: (context, index) {
         return Container(
-          margin: EdgeInsets.only(bottom: 8.0),
-          padding: EdgeInsets.all(4),
+          margin: const EdgeInsets.only(bottom: 8.0),
+          padding: const EdgeInsets.all(4),
           decoration: boxDecorationWithRoundedCorners(
             borderRadius: radius(12),
             border: Border.all(color: selectedIndex == index ? mlColorBlue : mlColorLightGrey100),
