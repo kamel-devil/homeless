@@ -10,6 +10,8 @@ import '../utils/MLString.dart';
 class MLPharmacyCategoriesComponent extends StatefulWidget {
   static String tag = '/MLPharmacyCategoriesComponent';
 
+  const MLPharmacyCategoriesComponent({super.key});
+
   @override
   MLPharmacyCategoriesComponentState createState() => MLPharmacyCategoriesComponentState();
 }
@@ -43,13 +45,13 @@ class MLPharmacyCategoriesComponentState extends State<MLPharmacyCategoriesCompo
           16.height,
           Row(
             children: [
-              Text('Categories', style: boldTextStyle(size: 18)).expand(),
+              Text('التصنيفات', style: boldTextStyle(size: 18)).expand(),
               Text(mlView_all!, style: secondaryTextStyle(color: mlColorBlue, size: 16)),
               4.width,
               Icon(Icons.arrow_forward_ios, color: mlColorBlue, size: 12),
             ],
           ).paddingAll(16.0).onTap(() {
-            MLOnlinePharmacyDetailScreen(index: 0).launch(context);
+            const MLOnlinePharmacyDetailScreen(index: 0).launch(context);
           }),
           16.height,
           HorizontalList(
@@ -78,7 +80,7 @@ class MLPharmacyCategoriesComponentState extends State<MLPharmacyCategoriesCompo
               );
             },
           ).onTap(() {
-            MLOnlinePharmacyDetailScreen(index: 0).launch(context);
+            const MLOnlinePharmacyDetailScreen(index: 0).launch(context);
           }),
           32.height,
           HorizontalList(
@@ -94,7 +96,7 @@ class MLPharmacyCategoriesComponentState extends State<MLPharmacyCategoriesCompo
                   ],
                 );
               }).onTap(() {
-            MLOnlinePharmacyDetailScreen(
+            const MLOnlinePharmacyDetailScreen(
               index: 0,
             ).launch(context);
           }),
@@ -112,7 +114,7 @@ class MLPharmacyCategoriesComponentState extends State<MLPharmacyCategoriesCompo
                   ],
                 );
               }).onTap(() {
-            MLOnlinePharmacyDetailScreen(index: 0).launch(context);
+            const MLOnlinePharmacyDetailScreen(index: 0).launch(context);
           }),
         ],
       ),

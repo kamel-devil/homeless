@@ -5,9 +5,10 @@ import 'package:nb_utils/nb_utils.dart';
 import '../components/MLHomeBottomComponent.dart';
 import '../components/MLHomeTopComponent.dart';
 
-
 class MLHomeFragment extends StatefulWidget {
   static String tag = '/MLHomeFragment';
+
+  const MLHomeFragment({super.key});
 
   @override
   _MLHomeFragmentState createState() => _MLHomeFragmentState();
@@ -30,7 +31,7 @@ class _MLHomeFragmentState extends State<MLHomeFragment> {
       child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            MLHomeTopComponent(),
+            const MLHomeTopComponent(),
             16.height,
             MLHomeBottomComponent(),
             64.height,

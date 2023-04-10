@@ -10,6 +10,8 @@ import '../utils/MLImage.dart';
 class MLOnlinePharmacyScreen extends StatefulWidget {
   static String tag = '/MLOnlinePharmacyScreen';
 
+  const MLOnlinePharmacyScreen({super.key});
+
   @override
   MLOnlinePharmacyScreenState createState() => MLOnlinePharmacyScreenState();
 }
@@ -20,10 +22,10 @@ class MLOnlinePharmacyScreenState extends State<MLOnlinePharmacyScreen> {
     initialPage: 0,
   );
   List<String> slides = <String>[
-    ml_ic_pharmacySlide3!,
-    ml_ic_pharmacySlide1!,
-    ml_ic_pharmacySlide2!,
-    ml_ic_pharmacySlide4!,
+    ml_ic_pharmacySlide3,
+    ml_ic_pharmacySlide1,
+    ml_ic_pharmacySlide2,
+    ml_ic_pharmacySlide4,
   ];
 
   @override
@@ -50,7 +52,7 @@ class MLOnlinePharmacyScreenState extends State<MLOnlinePharmacyScreen> {
           slivers: <Widget>[
             SliverAppBar(
               automaticallyImplyLeading: false,
-              expandedHeight: context.height() * 0.47,
+              expandedHeight: context.height() * 0.55,
               flexibleSpace: FlexibleSpaceBar(
                 background: Container(
                   color: mlPrimaryColor,
@@ -61,14 +63,6 @@ class MLOnlinePharmacyScreenState extends State<MLOnlinePharmacyScreen> {
                         children: [
                           mlBackToPreviousWidget(context, white),
                           8.width,
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Your Location', style: secondaryTextStyle(size: 12, color: white.withOpacity(0.5))),
-                              4.height,
-                              Text('35 St Martin\'s St West end', style: boldTextStyle(size: 14, color: white)),
-                            ],
-                          ),
                         ],
                       ).paddingAll(16.0),
                       Row(
@@ -77,8 +71,8 @@ class MLOnlinePharmacyScreenState extends State<MLOnlinePharmacyScreen> {
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text('Online', style: boldTextStyle(size: 32, color: white)),
-                              Text('Pharmacy', style: boldTextStyle(size: 32, color: white)),
+                              Text('', style: boldTextStyle(size: 32, color: white)),
+                              Text('الادويه', style: boldTextStyle(size: 32, color: white)),
                             ],
                           ).expand(),
                           const Icon(Icons.search, color: white, size: 24),
@@ -109,8 +103,9 @@ class MLOnlinePharmacyScreenState extends State<MLOnlinePharmacyScreen> {
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
                   if (index == 0) {
-                    return MLPharmacyCategoriesComponent();
+                    return const MLPharmacyCategoriesComponent();
                   }
+                  return null;
                 },
               ),
             ),

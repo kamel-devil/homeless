@@ -45,10 +45,10 @@ List<MLWalkThroughData> mlWalkThroughDataList() {
 
 List<MLServicesData> mlServiceDataList() {
   List<MLServicesData> list = [];
-  list.add(MLServicesData(title: 'زياره', icon: Icons.home_work_outlined, image: ml_ic_dashClinicVisit!, widget: MLBookAppointmentScreen(index: 0)));
-  list.add(MLServicesData(title: 'اكفل طفل', icon: Icons.home, image: ml_ic_dashHomeVisit, widget: MLBookAppointmentScreen(index: 0)));
+  list.add(MLServicesData(title: 'زياره', icon: Icons.home_work_outlined, image: ml_ic_dashClinicVisit, widget: const MLBookAppointmentScreen(index: 0)));
+  list.add(MLServicesData(title: 'اكفل طفل', icon: Icons.home, image: ml_ic_dashHomeVisit, widget: const MLBookAppointmentScreen(index: 0)));
   list.add(MLServicesData(title: 'محادثه الاضفال', icon: Icons.video_call, image: ml_ic_dashVideoCons, widget: MLVideoConsultScreen()));
-  list.add(MLServicesData(title: 'الادويه', icon: Icons.local_hospital, image: ml_ic_dashPharmacy, widget: MLOnlinePharmacyScreen()));
+  list.add(MLServicesData(title: 'الادويه', icon: Icons.local_hospital, image: ml_ic_dashPharmacy, widget: const MLOnlinePharmacyScreen()));
   list.add(MLServicesData(title: 'الامراض', icon: Icons.health_and_safety, image: ml_ic_dashCovid, widget: MLDiseaseScreen()));
   list.add(MLServicesData(title: 'الاحصائيات', icon: Icons.supervised_user_circle_outlined, image: ml_ic_dashPharmacy, widget: MLCovidScreen()));
   return list;

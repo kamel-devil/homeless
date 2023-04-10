@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "434942868379",
+    "project_id": "homlessness-a4f35",
+    "storage_bucket": "homlessness-a4f35.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:434942868379:android:f39e9f9a103f6727157f3e",
+        "android_client_info": {
+          "package_name": "com.example.homeless"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "434942868379-aa1grasrqnhqfj7m98muvbk462o0d5p0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBr6RdaAgHV5YrDLC92xJY2Gmu_TH4aEuI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "434942868379-aa1grasrqnhqfj7m98muvbk462o0d5p0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

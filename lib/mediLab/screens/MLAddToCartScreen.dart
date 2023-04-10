@@ -9,6 +9,8 @@ import 'MLConfirmOrderScreen.dart';
 class MLAddToCartScreen extends StatefulWidget {
   static String tag = '/MLShoppingCartScreen';
 
+  const MLAddToCartScreen({super.key});
+
   @override
   MLAddToCartScreenState createState() => MLAddToCartScreenState();
 }

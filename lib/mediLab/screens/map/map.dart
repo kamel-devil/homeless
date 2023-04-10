@@ -136,19 +136,16 @@ class _MapPageState extends State<MapPage> with TickerProviderStateMixin {
                           ...data.map((e) => Marker(
                               width: 50,
                               height: 50,
-                              point: LatLng(double.parse('${e['late']}'),
+                              point: LatLng(double.parse('${e['lat']}'),
                                   double.parse('${e['long']}')),
                               builder: (BuildContext context) => InkWell(
-                                    onTap: () {
-
-                                    },
+                                    onTap: () {},
                                     child: Stack(
                                       children: [
                                         CustomPaint(
                                           size: const Size(180, 110),
                                           painter: RPSCustomPainter(
-                                              color:
-                                                  HexColor.fromHex(e['color'])),
+                                              color: Colors.redAccent),
                                         ),
                                         const Positioned(
                                           right: 11,
@@ -222,7 +219,7 @@ class _MapPageState extends State<MapPage> with TickerProviderStateMixin {
                               typeHospital = type1[index];
                             });
                           },
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.local_hospital,
                             color: Colors.white,
                             size: 27.0,

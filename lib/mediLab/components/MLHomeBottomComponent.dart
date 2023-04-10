@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 import '../model/MLDepartmentData.dart';
 import '../model/MLTopHospitalData.dart';
+import '../screens/sponsorship_conditions/sponsorship_conditions.dart';
 import '../utils/MLColors.dart';
 import '../utils/MLDataProvider.dart';
 import '../utils/MLString.dart';
-
 
 class MLHomeBottomComponent extends StatefulWidget {
   static String tag = '/MLHomeBottomComponent';
@@ -54,19 +55,32 @@ class MLHomeBottomComponentState extends State<MLHomeBottomComponent> {
           wrapAlignment: WrapAlignment.spaceEvenly,
           itemCount: departmentList.length,
           itemBuilder: (BuildContext context, int index) {
-            return Container(
-              margin: const EdgeInsets.only(top: 8, bottom: 8, left: 8),
-              padding: const EdgeInsets.all(10),
-              decoration: boxDecorationRoundedWithShadow(12),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.asset((departmentList[index].image).validate(), height: 80, width: 80, fit: BoxFit.fill).paddingAll(8.0),
-                  Text((departmentList[index].title).validate(), style: boldTextStyle()),
-                  4.height,
-                  Text((departmentList[index].subtitle).validate(), style: secondaryTextStyle()),
-                  8.height,
-                ],
+            return InkWell(
+              onTap: () {
+                if (index == 3) {
+                  Get.to(SponsorshipConditions(),
+                      duration: const Duration(seconds: 1),
+                      transition: Transition.fadeIn);
+                }
+              },
+              child: Container(
+                margin: const EdgeInsets.only(top: 8, bottom: 8, left: 8),
+                padding: const EdgeInsets.all(10),
+                decoration: boxDecorationRoundedWithShadow(12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.asset((departmentList[index].image).validate(),
+                            height: 80, width: 80, fit: BoxFit.fill)
+                        .paddingAll(8.0),
+                    Text((departmentList[index].title).validate(),
+                        style: boldTextStyle()),
+                    4.height,
+                    Text((departmentList[index].subtitle).validate(),
+                        style: secondaryTextStyle()),
+                    8.height,
+                  ],
+                ),
               ),
             );
           },
@@ -90,11 +104,17 @@ class MLHomeBottomComponentState extends State<MLHomeBottomComponent> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.asset((tophospitalList[index].image).validate(), height: 140, width: 250, fit: BoxFit.fill).cornerRadiusWithClipRRectOnly(topLeft: 8, topRight: 8),
+                    Image.asset((tophospitalList[index].image).validate(),
+                            height: 140, width: 250, fit: BoxFit.fill)
+                        .cornerRadiusWithClipRRectOnly(topLeft: 8, topRight: 8),
                     8.height,
-                    Text((tophospitalList[index].title).validate(), style: boldTextStyle()).paddingOnly(left: 8.0),
+                    Text((tophospitalList[index].title).validate(),
+                            style: boldTextStyle())
+                        .paddingOnly(left: 8.0),
                     4.height,
-                    Text((tophospitalList[index].subtitle).validate(), style: secondaryTextStyle()).paddingOnly(left: 8.0),
+                    Text((tophospitalList[index].subtitle).validate(),
+                            style: secondaryTextStyle())
+                        .paddingOnly(left: 8.0),
                     10.height
                   ],
                 ),

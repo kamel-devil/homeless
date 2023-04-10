@@ -7,7 +7,7 @@ class MLBottomNavigationBarWidget extends StatefulWidget {
   final Function(int)? onTap;
   final int? index;
 
-  MLBottomNavigationBarWidget({this.onTap, this.index});
+  const MLBottomNavigationBarWidget({super.key, this.onTap, this.index});
 
   @override
   MLBottomNavigationBarWidgetState createState() => MLBottomNavigationBarWidgetState();
@@ -34,16 +34,16 @@ class MLBottomNavigationBarWidgetState extends State<MLBottomNavigationBarWidget
     return BottomNavigationBar(
       backgroundColor: Colors.white,
       unselectedItemColor: Colors.grey.shade400,
-      type: BottomNavigationBarType.fixed,
-      selectedLabelStyle: TextStyle(fontSize: 0),
-      unselectedLabelStyle: TextStyle(fontSize: 0),
+      type: BottomNavigationBarType.shifting,
+      selectedLabelStyle: const TextStyle(fontSize: 0),
+      unselectedLabelStyle: const TextStyle(fontSize: 0),
       currentIndex: widget.index!,
+      iconSize: 30,
       onTap: widget.onTap,
       items: [
         bottomNavigationItem(Icons.home_outlined),
         bottomNavigationItem(Icons.chat_bubble_outline),
         bottomNavigationItem(Icons.calendar_today_outlined),
-        bottomNavigationItem(Icons.notifications_none),
         bottomNavigationItem(Icons.people_alt_outlined),
       ],
     );

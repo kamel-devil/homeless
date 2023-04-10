@@ -78,5 +78,5 @@ const String? mlTablet_per_time = 'Tablet Per Time';
 
 const String? mlNotification = 'Notification';
 
-const String? mlDisease_symptoms = 'Disease Symptoms';
-const String? mlPhoneNumber = 'Your Phone Number';
+const String? mlDisease_symptoms = 'الامراض';
+const String? mlPhoneNumber = 'رقم هاتفك';

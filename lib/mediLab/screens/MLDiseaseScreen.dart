@@ -10,6 +10,8 @@ import 'MLSearchDiseaseScreen.dart';
 class MLDiseaseScreen extends StatefulWidget {
   static String tag = '/MLDiseaseScreen';
 
+  const MLDiseaseScreen({super.key});
+
   @override
   MLDiseaseScreenState createState() => MLDiseaseScreenState();
 }
@@ -20,9 +22,9 @@ class MLDiseaseScreenState extends State<MLDiseaseScreen> {
     initialPage: 0,
   );
   List<String> slides = <String>[
-    ml_ic_diseaseSlide1!,
-    ml_ic_diseaseSlide2!,
-    ml_ic_diseaseSlide3!,
+    ml_ic_diseaseSlide1,
+    ml_ic_diseaseSlide2,
+    ml_ic_diseaseSlide3,
   ];
 
   @override
@@ -49,7 +51,7 @@ class MLDiseaseScreenState extends State<MLDiseaseScreen> {
           slivers: <Widget>[
             SliverAppBar(
               automaticallyImplyLeading: false,
-              expandedHeight: 300,
+              expandedHeight: 310,
               flexibleSpace: FlexibleSpaceBar(
                 background: Container(
                   color: mlPrimaryColor,
@@ -69,7 +71,7 @@ class MLDiseaseScreenState extends State<MLDiseaseScreen> {
                         ],
                       ).paddingAll(16.0),
                       16.height,
-                      Container(
+                      SizedBox(
                         height: 170,
                         child: PageView(
                           controller: controller,
@@ -96,6 +98,7 @@ class MLDiseaseScreenState extends State<MLDiseaseScreen> {
                   if (index == 0) {
                     return MLDieaseaseComponent();
                   }
+                  return null;
                 },
               ),
             ),

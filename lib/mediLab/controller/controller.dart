@@ -22,23 +22,21 @@ class MapPageController extends GetxController {
   Locale? lang = const Locale('ar');
   int? module;
   bool end = false;
-   RxInt processIndex = 0.obs;
+  RxInt processIndex = 0.obs;
 
   Future getMarkers1(String type) async {
     var firestore = FirebaseFirestore.instance;
     QuerySnapshot qn = type == 'all'
-        ? await firestore.collection("hospital").get()
+        ? await firestore.collection("home").get()
         : await firestore
-            .collection("hospital")
+            .collection("home")
             .where('type', isEqualTo: type)
             .get();
     return qn.docs;
   }
 
-
-
   Future check() async {
-    // return Geolocator.requestPermission();
+     // return Geolocator.requestPermission();
     return Geolocator.checkPermission().then((value) {
       if (value == LocationPermission.denied) {
         return Geolocator.requestPermission();
@@ -46,7 +44,7 @@ class MapPageController extends GetxController {
         return true;
       }
     });
-    // notifyListeners();
+
   }
 
   Future<Position?> getCurrentLocation() async {
