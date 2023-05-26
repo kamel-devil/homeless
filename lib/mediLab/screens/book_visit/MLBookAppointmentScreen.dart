@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 
-import '../model/MLBookAppointmentData.dart';
-import '../utils/MLColors.dart';
-import '../utils/MLDataProvider.dart';
-import 'MLAddPaymentScreen.dart';
+import '../../model/MLBookAppointmentData.dart';
+import '../../utils/MLColors.dart';
+import '../../utils/MLDataProvider.dart';
+import '../MLAddPaymentScreen.dart';
+import 'time_date.dart';
 
 
 class MLBookAppointmentScreen extends StatefulWidget {
@@ -76,7 +77,7 @@ class MLBookAppointmentScreenState extends State<MLBookAppointmentScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Icon(Icons.arrow_back_ios, color: blackColor, size: 24).onTap(() {
+                        const Icon(Icons.arrow_back_ios, color: blackColor, size: 24).onTap(() {
                           currentWidget == 0
                               ? Navigator.of(context).pop()
                               : setState(() {
@@ -84,14 +85,7 @@ class MLBookAppointmentScreenState extends State<MLBookAppointmentScreen> {
                                   widget.index == currentWidget;
                                 });
                         }).expand(flex: 1),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text('Step $titleNumber of 5: ', textAlign: TextAlign.center, style: boldTextStyle(color: mlColorDarkBlue)),
-                            Text(titleText, textAlign: TextAlign.center, style: boldTextStyle(color: Colors.grey)),
-                          ],
-                        ).expand(flex: 8),
-                        Icon(Icons.home_outlined, color: blackColor, size: 24).expand(flex: 1),
+                        Expanded(child: Container()),
                       ],
                     ).paddingAll(16.0),
                     8.height,
@@ -115,20 +109,20 @@ class MLBookAppointmentScreenState extends State<MLBookAppointmentScreen> {
                   children: [
                     Text("Continue", style: boldTextStyle(color: white)),
                     8.width,
-                    Icon(Icons.arrow_forward_ios, color: whiteColor, size: 12),
+                    const Icon(Icons.arrow_forward_ios, color: whiteColor, size: 12),
                   ],
                 ),
                 onTap: () {
                   setState(() {
                     currentWidget++;
                   });
-                  if (currentWidget > 4) {
+                  if (currentWidget > 0) {
                     setState(() {
                       currentWidget--;
                     });
                     currentWidget = 0;
                     finish(context);
-                    MLAddPaymentScreen().launch(context);
+                    const WidgetPage().launch(context);
                   }
                 },
               ).paddingOnly(right: 16, left: 16, bottom: 16)

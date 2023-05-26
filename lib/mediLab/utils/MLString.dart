@@ -58,7 +58,7 @@ const String? mlCovid_desc1 = 'The spread of the new '
     'coronavirus COVID-19, has led to unparalleled global measures such as lockdown and '
     'suspension of all retail, recreation and religious activities during the first months of 2020.';
 
-const String? mlCovid_desc2 = ' Nevertheless, no scientific evidence has been reported so far with regards to the'
+const String mlCovid_desc2 = ' Nevertheless, no scientific evidence has been reported so far with regards to the'
     ' impact on road safety and driving behavior';
 
 const String? mlMy_activity = 'My Activity';

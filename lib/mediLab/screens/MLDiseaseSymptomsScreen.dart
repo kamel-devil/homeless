@@ -5,7 +5,7 @@ import 'package:nb_utils/nb_utils.dart';
 import '../components/MLDieaseaseSymptomsComponent.dart';
 import '../utils/MLColors.dart';
 import '../utils/MLImage.dart';
-import 'MLBookAppointmentScreen.dart';
+import 'book_visit/MLBookAppointmentScreen.dart';
 
 class MLDieaseseSymptomsScreen extends StatefulWidget {
   static String tag = '/MLDieaseaseSymptomsScreen';

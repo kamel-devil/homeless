@@ -55,7 +55,7 @@ class _MLHomeTopComponentState extends State<MLHomeTopComponent> {
                   CircleAvatar(
                       radius: 22,
                       backgroundColor: mlColorCyan,
-                      child: Image.asset(ml_ic_profile_picture!)),
+                      child: Image.asset(ml_ic_profile_picture)),
                   8.width,
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

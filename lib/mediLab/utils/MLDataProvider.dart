@@ -26,7 +26,7 @@ import '../model/MLSpecialistData.dart';
 import '../model/MLTopHospitalData.dart';
 import '../model/MLVoucherData.dart';
 import '../model/MLWalkThroughData.dart';
-import '../screens/MLBookAppointmentScreen.dart';
+import '../screens/book_visit/MLBookAppointmentScreen.dart';
 import '../screens/MLCovid19Screen.dart';
 import '../screens/MLDiseaseScreen.dart';
 import '../screens/MLOnlinePharmacyScreen.dart';
@@ -49,7 +49,7 @@ List<MLServicesData> mlServiceDataList() {
   list.add(MLServicesData(title: 'اكفل طفل', icon: Icons.home, image: ml_ic_dashHomeVisit, widget: const MLBookAppointmentScreen(index: 0)));
   list.add(MLServicesData(title: 'محادثه الاضفال', icon: Icons.video_call, image: ml_ic_dashVideoCons, widget: MLVideoConsultScreen()));
   list.add(MLServicesData(title: 'الادويه', icon: Icons.local_hospital, image: ml_ic_dashPharmacy, widget: const MLOnlinePharmacyScreen()));
-  list.add(MLServicesData(title: 'الامراض', icon: Icons.health_and_safety, image: ml_ic_dashCovid, widget: MLDiseaseScreen()));
+  list.add(MLServicesData(title: 'الامراض', icon: Icons.health_and_safety, image: ml_ic_dashCovid, widget: const MLDiseaseScreen()));
   list.add(MLServicesData(title: 'الاحصائيات', icon: Icons.supervised_user_circle_outlined, image: ml_ic_dashPharmacy, widget: MLCovidScreen()));
   return list;
 }
@@ -79,10 +79,10 @@ List<MLTopHospitalData> mlTopHospitalDataList() {
 List<MLBookAppointmentData> mlBookAppointmentDataList() {
   List<MLBookAppointmentData> list = [];
   list.add(MLBookAppointmentData(id: '1', title: 'Select Service', widget: MLClinicVisitComponent(), progress: 0.2));
-  list.add(MLBookAppointmentData(id: '2', title: 'Choose Hospital', widget: MLHospitalListComponent(), progress: 0.4));
-  list.add(MLBookAppointmentData(id: '3', title: 'Choose Doctor', widget: MLDoctorListComponent(), progress: 0.6));
-  list.add(MLBookAppointmentData(id: '4', title: 'Choose Patient', widget: MLPatientComponent(), progress: 0.8));
-  list.add(MLBookAppointmentData(id: '5', title: 'Confirm Appointment', widget: MLConfirmAppointmentComponent(), progress: 1.0));
+  // list.add(MLBookAppointmentData(id: '2', title: 'Choose Hospital', widget: MLHospitalListComponent(), progress: 0.4));
+  // list.add(MLBookAppointmentData(id: '3', title: 'Choose Doctor', widget: MLDoctorListComponent(), progress: 0.6));
+  // list.add(MLBookAppointmentData(id: '4', title: 'Choose Patient', widget: MLPatientComponent(), progress: 0.8));
+  // list.add(MLBookAppointmentData(id: '2', title: 'Confirm Appointment', widget: MLConfirmAppointmentComponent(), progress: 1.0));
   return list;
 }
 

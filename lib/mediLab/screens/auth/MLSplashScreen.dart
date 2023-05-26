@@ -6,6 +6,8 @@ import 'MLWalkThroughScreen.dart';
 
 
 class MLSplashScreen extends StatefulWidget {
+  const MLSplashScreen({super.key});
+
   @override
   _MLSplashScreenState createState() => _MLSplashScreenState();
 }
