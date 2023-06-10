@@ -1,18 +1,14 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map_location_marker/flutter_map_location_marker.dart';
 import 'package:flutter_map_marker_cluster/flutter_map_marker_cluster.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:homeless/mediLab/controller/controller.dart';
 import 'package:latlong2/latlong.dart';
-
-import 'package:provider/provider.dart';
-
 import 'package:lottie/lottie.dart' as lo;
 
-import '../../components/colors.dart';
 import '../../components/custom_shape.dart';
 
 class MapPage extends StatefulWidget {
@@ -136,7 +132,7 @@ class _MapPageState extends State<MapPage> with TickerProviderStateMixin {
                           ...data.map((e) => Marker(
                               width: 50,
                               height: 50,
-                              point: LatLng(double.parse('${e['lat']}'),
+                              point: LatLng(double.parse('${e['late']}'),
                                   double.parse('${e['long']}')),
                               builder: (BuildContext context) => InkWell(
                                     onTap: () {},

@@ -22,16 +22,6 @@ class MLClinicVisitComponentState extends State<MLClinicVisitComponent> {
   int? selectedIndex = 0;
 
   @override
-  void initState() {
-    super.initState();
-    init();
-  }
-
-  Future<void> init() async {
-    //
-  }
-
-  @override
   void setState(fn) {
     if (mounted) super.setState(fn);
   }
@@ -106,10 +96,10 @@ class MLClinicVisitComponentState extends State<MLClinicVisitComponent> {
                                     Text((data[index]['name']),
                                         style: boldTextStyle(size: 18)),
                                     8.height,
-                                    Text((data[index]['manager']),
+                                    Text('',
                                         style: secondaryTextStyle()),
                                     8.height,
-                                    Text((data[index]['number']),
+                                    Text((data[index]['phone']),
                                         style: boldTextStyle(
                                             color: mlColorDarkBlue)),
                                   ],
@@ -133,7 +123,7 @@ class MLClinicVisitComponentState extends State<MLClinicVisitComponent> {
                                     ],
                                   ),
                                 ),
-                                Text('Dec 23 at 8:30 AM',
+                                Text('',
                                     style: secondaryTextStyle(
                                         color: Colors.black87)),
                               ],

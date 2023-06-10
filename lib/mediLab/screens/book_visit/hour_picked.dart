@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -66,6 +67,7 @@ class _CupertState extends State<Cupert> {
               ),
               onTap: () {
                 controller.updateTime(value!.toString().split('.').first);
+                addBookVisit();
                 const MLDashboardScreen().launch(context);
               },
             ).paddingOnly(right: 16, left: 16, bottom: 16)
@@ -77,7 +79,22 @@ class _CupertState extends State<Cupert> {
 
   void addBookVisit() async {
     await FirebaseFirestore.instance.collection('visit').add({
-      ...controller.date as Map,
+      'home': controller.visitData['name'],
+      'phone': controller.visitData['phone'],
+      'address': controller.visitData['address'],
+      'uid': FirebaseAuth.instance.currentUser!.uid,
+      'time': controller.time,
+      'date': controller.date,
+    });
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(FirebaseAuth.instance.currentUser!.uid)
+        .collection('visit')
+        .add({
+      'home': controller.visitData['name'],
+      'phone': controller.visitData['phone'],
+      'address': controller.visitData['address'],
+      'uid': FirebaseAuth.instance.currentUser!.uid,
       'time': controller.time,
       'date': controller.date,
     });

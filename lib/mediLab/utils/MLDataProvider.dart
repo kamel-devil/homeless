@@ -78,7 +78,7 @@ List<MLTopHospitalData> mlTopHospitalDataList() {
 
 List<MLBookAppointmentData> mlBookAppointmentDataList() {
   List<MLBookAppointmentData> list = [];
-  list.add(MLBookAppointmentData(id: '1', title: 'Select Service', widget: MLClinicVisitComponent(), progress: 0.2));
+  list.add(MLBookAppointmentData(id: '1', title: 'Select Service', widget: const MLClinicVisitComponent(), progress: 0.2));
   // list.add(MLBookAppointmentData(id: '2', title: 'Choose Hospital', widget: MLHospitalListComponent(), progress: 0.4));
   // list.add(MLBookAppointmentData(id: '3', title: 'Choose Doctor', widget: MLDoctorListComponent(), progress: 0.6));
   // list.add(MLBookAppointmentData(id: '4', title: 'Choose Patient', widget: MLPatientComponent(), progress: 0.8));

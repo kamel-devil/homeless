@@ -7,6 +7,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   emoji_picker_flutter
   geolocator_windows
   nb_utils
+  rive_common
   url_launcher_windows
 )
 

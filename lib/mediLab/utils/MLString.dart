@@ -12,7 +12,7 @@ const String? mlSlide_four_subtitle = 'Carefully track your health indicators an
 
 const String? mlLogin = 'تسجيل';
 const String? mlLogin_with = 'Or, login with...';
-const String? mlLogin_title = 'Insert your phone number to login';
+const String? mlLogin_title = 'ادخل بياناتك ...';
 const String? mlPhone_number = '';
 const String? mlPassword = 'Your Password';
 const String? mlAdd_password = 'Add New Password';
@@ -20,7 +20,7 @@ const String? mlEnter_password = 'Enter Your Password';
 const String? mlReenter_password = 'Re-enter Your Password';
 const String? mlForget_password = 'Forgot Password?';
 const String? mlForgetPassword = 'Forgot Password';
-const String? mlDont_have_account = 'Don\'t have an account?';
+const String? mlDont_have_account = 'ليس لديك حساب ؟';
 const String? mlSend = 'ارسال';
 const String? mlEnter_code = 'Enter Authentication Code';
 const String? mlContact_msg = 'Confirm Phone Number';

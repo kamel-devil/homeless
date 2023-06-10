@@ -4,9 +4,7 @@ import 'package:nb_utils/nb_utils.dart';
 import '../../model/MLBookAppointmentData.dart';
 import '../../utils/MLColors.dart';
 import '../../utils/MLDataProvider.dart';
-import '../MLAddPaymentScreen.dart';
 import 'time_date.dart';
-
 
 class MLBookAppointmentScreen extends StatefulWidget {
   static String tag = '/MLBookAppointmentScreen';
@@ -45,8 +43,6 @@ class MLBookAppointmentScreenState extends State<MLBookAppointmentScreen> {
   @override
   Widget build(BuildContext context) {
     final navigatorKey = GlobalObjectKey<NavigatorState>(context);
-    String titleNumber = data[currentWidget].id.validate();
-    String titleText = data[currentWidget].title.validate();
     double progress = data[currentWidget].progress.validate();
 
     return WillPopScope(
@@ -70,14 +66,17 @@ class MLBookAppointmentScreenState extends State<MLBookAppointmentScreen> {
             alignment: Alignment.bottomCenter,
             children: <Widget>[
               Container(
-                decoration: boxDecorationWithRoundedCorners(borderRadius: radiusOnly(topRight: 32)),
+                decoration: boxDecorationWithRoundedCorners(
+                    borderRadius: radiusOnly(topRight: 32)),
                 child: Column(
                   children: <Widget>[
                     8.height,
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        const Icon(Icons.arrow_back_ios, color: blackColor, size: 24).onTap(() {
+                        const Icon(Icons.arrow_back_ios,
+                                color: blackColor, size: 24)
+                            .onTap(() {
                           currentWidget == 0
                               ? Navigator.of(context).pop()
                               : setState(() {
@@ -92,7 +91,8 @@ class MLBookAppointmentScreenState extends State<MLBookAppointmentScreen> {
                     LinearProgressIndicator(
                       minHeight: 2.0,
                       backgroundColor: mlColorLightGrey,
-                      valueColor: AlwaysStoppedAnimation<Color>(mlColorDarkBlue),
+                      valueColor:
+                          AlwaysStoppedAnimation<Color>(mlColorDarkBlue),
                       value: progress,
                     ),
                     8.height,
@@ -109,7 +109,8 @@ class MLBookAppointmentScreenState extends State<MLBookAppointmentScreen> {
                   children: [
                     Text("Continue", style: boldTextStyle(color: white)),
                     8.width,
-                    const Icon(Icons.arrow_forward_ios, color: whiteColor, size: 12),
+                    const Icon(Icons.arrow_forward_ios,
+                        color: whiteColor, size: 12),
                   ],
                 ),
                 onTap: () {

@@ -24,16 +24,6 @@ class _MLHomeTopComponentState extends State<MLHomeTopComponent> {
   List<MLServicesData> data = mlServiceDataList();
 
   @override
-  void initState() {
-    super.initState();
-    init();
-  }
-
-  Future<void> init() async {
-    //
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Container(
       width: context.width(),
@@ -60,7 +50,7 @@ class _MLHomeTopComponentState extends State<MLHomeTopComponent> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(mlProfile_name!,
+                      Text('Hi',
                           style: boldTextStyle(color: whiteColor)),
                       4.height,
                       Text(mlWelcome!,

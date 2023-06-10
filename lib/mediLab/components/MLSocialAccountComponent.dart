@@ -8,22 +8,14 @@ import '../utils/MLImage.dart';
 class MLSocialAccountsComponent extends StatefulWidget {
   static String tag = '/MLSocialAccountsComponent';
 
+  const MLSocialAccountsComponent({super.key});
+
   @override
   MLSocialAccountsComponentState createState() => MLSocialAccountsComponentState();
 }
 
 class MLSocialAccountsComponentState extends State<MLSocialAccountsComponent> {
   List<String?> data = <String?>[ml_ic_logo_google, ml_ic_logo_fb, ml_ic_logo_ios];
-
-  @override
-  void initState() {
-    super.initState();
-    init();
-  }
-
-  Future<void> init() async {
-    //
-  }
 
   @override
   void setState(fn) {

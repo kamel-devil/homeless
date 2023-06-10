@@ -4,12 +4,14 @@ import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'mediLab/screens/auth/MLSplashScreen.dart';
+import 'mediLab/screens/auth/MLLoginScreen.dart';
+import 'mediLab/screens/nicu_chat/screens/auth/login_screen.dart';
 import 'mediLab/store/AppStore.dart';
 
 AppStore appStore = AppStore();
 final navigatorKey = GlobalKey<NavigatorState>();
 late Size mq;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -29,7 +31,7 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Amiri',
           primarySwatch: Colors.blue,
           textTheme: TextTheme(titleMedium: GoogleFonts.abel())),
-      home: const MLSplashScreen(),
+      home:  const MLLoginScreen(),
     );
   }
 }

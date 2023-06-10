@@ -69,6 +69,8 @@ dependencies:
   emoji_picker_flutter:
   gallery_saver:
   google_sign_in: ^5.4.2
+  awesome_dialog:
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
