@@ -19,7 +19,7 @@ class MLCalendarFragmentState extends State<MLCalendarFragment> with SingleTicke
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length:1, vsync: this);
     init();
   }
 
