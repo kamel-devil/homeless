@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -37,68 +38,74 @@ class MLPharmacyProductComponentState extends State<MLPharmacyProductComponent> 
       children: [
         Row(
           children: [
-            Text('Products (34)', style: boldTextStyle(size: 20)).expand(),
+            Text('الادوية', style: boldTextStyle(size: 20)).expand(),
             const Icon(Icons.format_line_spacing, color: black, size: 24),
           ],
         ),
         16.height,
-        StaggeredGridView.countBuilder(
-          scrollDirection: Axis.vertical,
-          physics: const ScrollPhysics(),
-          shrinkWrap: true,
-          crossAxisCount: 2,
-          itemCount: listTwo.length,
-          itemBuilder: (context, index) {
-            return Container(
-              decoration: boxDecorationWithRoundedCorners(
-                borderRadius: radius(12),
-                border: Border.all(color: mlColorLightGrey),
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Stack(
-                    alignment: Alignment.bottomLeft,
-                    children: [
-                      Image.asset((listTwo[index].image).validate(), height: 120, width: context.width(), fit: BoxFit.cover).cornerRadiusWithClipRRectOnly(topRight: 8, topLeft: 8),
-                      Container(
-                        decoration: boxDecorationWithRoundedCorners(backgroundColor: mlColorDarkBlue),
-                        child: Text('-30%', style: secondaryTextStyle(color: white)).paddingOnly(right: 8, left: 8.0),
-                      ).paddingOnly(left: 4.0, bottom: 8)
-                    ],
-                  ),
-                  16.height,
-                  Row(
-                    children: [
-                      RatingBarWidget(onRatingChanged: (v) {}, rating: 3.5, size: 14).expand(),
-                      4.width,
-                      Text(('4.8 (456)'), style: secondaryTextStyle()),
-                    ],
-                  ).paddingOnly(left: 10, right: 10),
-                  8.height,
-                  Text((listTwo[index].title).validate(), style: boldTextStyle()).paddingOnly(left: 10, right: 10),
-                  2.height,
-                  Text(('5 ml').validate(), style: secondaryTextStyle()).paddingOnly(left: 10, right: 10),
-                  4.height,
-                  Row(
-                    children: [
-                      Text(('\$25.00').validate(), style: boldTextStyle()),
-                      4.width,
-                      Text(('\$95.00').validate(), style: boldTextStyle(color: Colors.grey.shade500, decoration: TextDecoration.lineThrough)),
-                    ],
-                  ).paddingOnly(left: 10, right: 10),
-                  12.height,
-                ],
-              ),
-            ).onTap(() {
-              MLProductDetailScreen().launch(context);
-            });
-          },
-          staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
-          mainAxisSpacing: 16.0,
-          crossAxisSpacing: 16.0,
+        FutureBuilder(
+          future: getClients(),
+          builder: (context,snapshot) {
+            if(snapshot.hasData){
+              List  data =snapshot.data as List;
+              return StaggeredGridView.countBuilder(
+                scrollDirection: Axis.vertical,
+                physics: const ScrollPhysics(),
+                shrinkWrap: true,
+                crossAxisCount: 2,
+                itemCount: data.length,
+                itemBuilder: (context, index) {
+                  return Container(
+
+                    decoration: boxDecorationWithRoundedCorners(
+                      borderRadius: radius(12),
+                      border: Border.all(color: mlColorLightGrey),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Stack(
+                          alignment: Alignment.bottomLeft,
+                          children: [
+                            Image.network((data[index]['image']), height: 120, width: context.width(), fit: BoxFit.cover).cornerRadiusWithClipRRectOnly(topRight: 8, topLeft: 8),
+                          ],
+                        ),
+                        16.height,
+                        Row(
+                          children: [
+                            Image.asset('images/mediLab/images/required.png',width: 35,height: 35,),
+
+                            4.width,
+                            Text(('${data[index]['important']}/10'), style: secondaryTextStyle()),
+                          ],
+                        ).paddingOnly(left: 10, right: 10),
+                        8.height,
+                        Text((data[index]['name']), style: boldTextStyle()).paddingOnly(left: 10, right: 10),
+                        4.height,
+                        Text(('\$ ${data[index]['price']}'), style: boldTextStyle()).paddingOnly(left: 10, right: 10),
+                        12.height,
+                      ],
+                    ),
+                  ).onTap(() {
+                    MLProductDetailScreen(data[index]).launch(context);
+                  });
+                },
+                staggeredTileBuilder: (index) => const StaggeredTile.fit(1),
+                mainAxisSpacing: 16.0,
+                crossAxisSpacing: 16.0,
+              );
+
+            }else{
+              return const Center(child: CircularProgressIndicator());
+            }
+          }
         ),
       ],
     ).paddingAll(16.0);
+  }
+  Future getClients() async {
+    var firestore = FirebaseFirestore.instance;
+    QuerySnapshot qn = await firestore.collection("Drugs").get();
+    return qn.docs;
   }
 }

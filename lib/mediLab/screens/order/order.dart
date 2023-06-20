@@ -1,10 +1,16 @@
 import 'dart:math';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:homeless/mediLab/components/defaulttextformfield.dart';
+import 'package:intl/intl.dart';
 
 import 'package:timelines/timelines.dart';
+
+import '../home/MLDashboardScreen.dart';
 
 class OrderRequest extends StatefulWidget {
   const OrderRequest({Key? key}) : super(key: key);
@@ -51,15 +57,17 @@ class _OrderRequestState extends State<OrderRequest> {
   TextEditingController center = TextEditingController();
 
   TextEditingController address = TextEditingController();
+  TextEditingController ageFrom = TextEditingController();
+  TextEditingController ageTo = TextEditingController();
 
   TextEditingController phoneNumber = TextEditingController();
 
   bool maleSelected = false;
-   double kTileHeight = 50.0;
+  double kTileHeight = 50.0;
 
-   Color completeColor = Color(0xff5e6172);
-   MaterialAccentColor inProgressColor = Colors.redAccent;
-   Color todoColor = Color(0xffd1d2d7);
+  Color completeColor = const Color(0xff5e6172);
+  MaterialAccentColor inProgressColor = Colors.redAccent;
+  Color todoColor = const Color(0xffd1d2d7);
   bool femaleSelected = false;
   int _processIndex = 0;
   final _processes = [
@@ -860,7 +868,6 @@ class _OrderRequestState extends State<OrderRequest> {
                               onTap: () {
                                 setState(() {
                                   maleSelected = true;
-
                                   femaleSelected = false;
                                 });
                               },
@@ -899,7 +906,6 @@ class _OrderRequestState extends State<OrderRequest> {
                               onTap: () {
                                 setState(() {
                                   femaleSelected = true;
-
                                   maleSelected = false;
                                 });
                               },
@@ -956,7 +962,7 @@ class _OrderRequestState extends State<OrderRequest> {
                               color: Colors.redAccent,
                             ),
                             val: false,
-                            controller: center),
+                            controller: ageFrom),
                         const SizedBox(
                           height: 10,
                         ),
@@ -977,7 +983,7 @@ class _OrderRequestState extends State<OrderRequest> {
                               color: Colors.redAccent,
                             ),
                             val: false,
-                            controller: address),
+                            controller: ageTo),
                         const SizedBox(
                           height: 50,
                         ),
@@ -1017,7 +1023,42 @@ class _OrderRequestState extends State<OrderRequest> {
                           height: 50,
                         ),
                         GestureDetector(
-                          onTap: () {},
+                          onTap: () {
+                            uploadRequest(
+                                {
+                                  'firstName': fName.text,
+                                  'secondName': lName.text,
+                                  'thirdName': tName.text,
+                                  'nickName': nickName.text,
+                                  'statue': statue.text,
+                                  'religion': deyana.text,
+                                  'education': edu.text,
+                                  'career': jop.text,
+                                  'phone': phone.text,
+                                  'email': email.text,
+                                  'idGovern': idNumber.text,
+                                  'governorate': rigon.text,
+                                  'dob': birthDay.text,
+                                  'idPassport': travelNumber.text,
+                                  'nationality': nationality.text,
+                                  "governorateMyHome": rigon.text,
+                                  "sectionMyHome": center.text,
+                                  'addressMyHome': address.text,
+                                  'phoneMyHome': phoneNumber.text,
+                                  'id': FirebaseAuth.instance.currentUser!.uid,
+                                  'gender': femaleSelected==true?'female':'male',
+                                  'ageFrom': ageFrom.text,
+                                  'ageTo': ageTo.text,
+                                  'time': DateFormat('hh:mm a').format(DateTime.now()).toString(),
+                                  'date': DateFormat('yyyy-MM-dd').format(DateTime.now()).toString(),
+                                }
+                            ).whenComplete(() {
+                              Get.offAll(const MLDashboardScreen(),
+                                  duration: const Duration(seconds: 1),
+                              transition: Transition.fadeIn);
+                            });
+
+                          },
                           child: Container(
                             height: 60,
                             width: double.infinity,
@@ -1054,6 +1095,12 @@ class _OrderRequestState extends State<OrderRequest> {
         ],
       ),
     );
+  }
+
+  Future uploadRequest(
+   map
+  ) async {
+    await FirebaseFirestore.instance.collection('Requests').add(map);
   }
 }
 

@@ -65,18 +65,15 @@ class MLCalendarFragmentState extends State<MLCalendarFragment> with SingleTicke
                     indicatorSize: TabBarIndicatorSize.label,
                     unselectedLabelColor: Colors.grey,
                     labelStyle: primaryTextStyle(size: 14),
-                    tabs: [
+                    tabs: const [
                       Tab(text: mlAppointment),
-                      Tab(text: mlDelivery),
-                      Tab(text: mlMedication),
+
                     ],
                   ),
                   TabBarView(
                     controller: _tabController,
                     children: [
                       MLAppointmentDetailListComponent(),
-                      MLDeliveredDataComponent(),
-                      MLMedicationComponent(),
                     ],
                   ).expand(),
                 ],

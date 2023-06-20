@@ -19,7 +19,7 @@ class MLOnlinePharmacyDetailScreen extends StatefulWidget {
 
 class MLOnlinePharmacyDetailScreenState
     extends State<MLOnlinePharmacyDetailScreen> {
-  List<Widget> data = [MLCategoryComponent(), MLCategoryProductComponent()];
+  List<Widget> data = [ MLCategoryProductComponent()];
 
   @override
   void initState() {
@@ -58,20 +58,6 @@ class MLOnlinePharmacyDetailScreenState
                   ],
                 ),
                 8.height,
-                Row(
-                  children: [
-                    Text('الادويه ',
-                        style: secondaryTextStyle(
-                            size: 12, color: white.withOpacity(0.3))),
-                    (widget.index == 0)
-                        ? Text('> Prescription Drug',
-                            style: secondaryTextStyle(
-                                size: 12, color: white.withOpacity(0.3)))
-                        : Text('> Prescription Drug > Analgesic',
-                            style: secondaryTextStyle(
-                                size: 12, color: white.withOpacity(0.3))),
-                  ],
-                ).paddingLeft(8.0),
               ],
             ).paddingAll(16.0),
             data[widget.index!].validate().flexible(),

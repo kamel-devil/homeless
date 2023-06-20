@@ -13,8 +13,6 @@ class MLCategoryProductComponent extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             16.height,
-            Text('Analgestic', style: boldTextStyle(size: 24)).paddingOnly(left: 16),
-            10.height,
             MLPharmacyProductComponent(),
           ],
         ),

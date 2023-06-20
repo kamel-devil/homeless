@@ -10,12 +10,21 @@ import 'MLAddToCartScreen.dart';
 class MLProductDetailScreen extends StatefulWidget {
   static String tag = '/MLProductDetailScreen';
 
+  MLProductDetailScreen(this.data);
+
+  final data;
+
   @override
   MLProductDetailScreenState createState() => MLProductDetailScreenState();
 }
 
 class MLProductDetailScreenState extends State<MLProductDetailScreen> {
-  List<String?> slides = [ml_ic_mediTwo, ml_ic_mediThree, ml_ic_mediFour, ml_ic_mediFive];
+  List<String?> slides = [
+    ml_ic_mediTwo,
+    ml_ic_mediThree,
+    ml_ic_mediFour,
+    ml_ic_mediFive
+  ];
   PageController controller = PageController();
 
   @override
@@ -54,34 +63,11 @@ class MLProductDetailScreenState extends State<MLProductDetailScreen> {
                           width: double.infinity,
                           height: context.height() * 0.42,
                           color: Colors.grey.shade50,
-                          child: Stack(
-                            alignment: Alignment.bottomLeft,
-                            children: [
-                              PageView(
-                                controller: controller,
-                                children: slides.map((e) {
-                                  return Image.asset(e.validate(), fit: BoxFit.cover);
-                                }).toList(),
-                              ),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Container(
-                                    padding: const EdgeInsets.only(right: 16.0, left: 16.0),
-                                    decoration: boxDecorationWithRoundedCorners(
-                                      backgroundColor: Colors.blue.shade600,
-                                      borderRadius: radius(24),
-                                    ),
-                                    child: Text('-30%', style: secondaryTextStyle(color: white, size: 16)),
-                                  ),
-                                  DotIndicator(indicatorColor: black, unselectedIndicatorColor: Colors.grey, pageController: controller, pages: slides),
-                                  SizedBox(width: context.width() * 0.25)
-                                ],
-                              ).paddingOnly(left: 16.0, bottom: 16.0),
-                            ],
-                          ),
+                          child: Image.network(widget.data['image'],
+                              fit: BoxFit.fill),
                         ),
-                        mlBackToPreviousWidget(context, black).paddingOnly(left: 16, top: 16)
+                        mlBackToPreviousWidget(context, black)
+                            .paddingOnly(left: 16, top: 16)
                       ],
                     ),
                   ),
@@ -90,7 +76,7 @@ class MLProductDetailScreenState extends State<MLProductDetailScreen> {
                   delegate: SliverChildBuilderDelegate(
                     (context, index) {
                       if (index == 0) {
-                        return MLProductDetailComponent();
+                        return MLProductDetailComponent(widget.data);
                       }
                     },
                   ),
@@ -104,7 +90,7 @@ class MLProductDetailScreenState extends State<MLProductDetailScreen> {
                 finish(context);
                 finish(context);
                 finish(context);
-                MLAddToCartScreen().launch(context);
+                const MLAddToCartScreen().launch(context);
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

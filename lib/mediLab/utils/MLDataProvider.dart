@@ -26,6 +26,7 @@ import '../model/MLSpecialistData.dart';
 import '../model/MLTopHospitalData.dart';
 import '../model/MLVoucherData.dart';
 import '../model/MLWalkThroughData.dart';
+import '../screens/MLOnlinePharmacyDetailScreen.dart';
 import '../screens/book_visit/MLBookAppointmentScreen.dart';
 import '../screens/MLCovid19Screen.dart';
 import '../screens/MLDiseaseScreen.dart';
@@ -48,7 +49,7 @@ List<MLServicesData> mlServiceDataList() {
   list.add(MLServicesData(title: 'زياره', icon: Icons.home_work_outlined, image: ml_ic_dashClinicVisit, widget: const MLBookAppointmentScreen(index: 0)));
   list.add(MLServicesData(title: 'اكفل طفل', icon: Icons.home, image: ml_ic_dashHomeVisit, widget: const MLBookAppointmentScreen(index: 0)));
   list.add(MLServicesData(title: 'محادثه الاضفال', icon: Icons.video_call, image: ml_ic_dashVideoCons, widget: MLVideoConsultScreen()));
-  list.add(MLServicesData(title: 'الادويه', icon: Icons.local_hospital, image: ml_ic_dashPharmacy, widget: const MLOnlinePharmacyScreen()));
+  list.add(MLServicesData(title: 'الادويه', icon: Icons.local_hospital, image: ml_ic_dashPharmacy, widget: const MLOnlinePharmacyDetailScreen(index: 0,)));
   list.add(MLServicesData(title: 'الامراض', icon: Icons.health_and_safety, image: ml_ic_dashCovid, widget: const MLDiseaseScreen()));
   list.add(MLServicesData(title: 'الاحصائيات', icon: Icons.supervised_user_circle_outlined, image: ml_ic_dashPharmacy, widget: MLCovidScreen()));
   return list;

@@ -4,6 +4,8 @@ import 'package:nb_utils/nb_utils.dart';
 
 import '../model/MLDepartmentData.dart';
 import '../model/MLTopHospitalData.dart';
+import '../screens/sponsorship_conditions/fitness.dart';
+import '../screens/sponsorship_conditions/learning.dart';
 import '../screens/sponsorship_conditions/sponsorship_conditions.dart';
 import '../utils/MLColors.dart';
 import '../utils/MLDataProvider.dart';
@@ -59,6 +61,14 @@ class MLHomeBottomComponentState extends State<MLHomeBottomComponent> {
               onTap: () {
                 if (index == 3) {
                   Get.to(SponsorshipConditions(),
+                      duration: const Duration(seconds: 1),
+                      transition: Transition.fadeIn);
+                }else if(index == 2){
+                  Get.to(Fitness(),
+                      duration: const Duration(seconds: 1),
+                      transition: Transition.fadeIn);
+                }else if(index==0){
+                  Get.to(Learning(),
                       duration: const Duration(seconds: 1),
                       transition: Transition.fadeIn);
                 }

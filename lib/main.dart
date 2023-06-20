@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -5,6 +6,7 @@ import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'mediLab/screens/auth/MLLoginScreen.dart';
+import 'mediLab/screens/home/MLDashboardScreen.dart';
 import 'mediLab/screens/nicu_chat/screens/auth/login_screen.dart';
 import 'mediLab/store/AppStore.dart';
 
@@ -31,7 +33,9 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Amiri',
           primarySwatch: Colors.blue,
           textTheme: TextTheme(titleMedium: GoogleFonts.abel())),
-      home:  const MLLoginScreen(),
+      home:
+      FirebaseAuth.instance.currentUser !=null ?const MLDashboardScreen():
+      const MLLoginScreen(),
     );
   }
 }

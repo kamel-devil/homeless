@@ -6,6 +6,7 @@ import '../components/MLPharmacyCategoriesComponent.dart';
 import '../utils/MLColors.dart';
 import '../utils/MLCommon.dart';
 import '../utils/MLImage.dart';
+import 'MLOnlinePharmacyDetailScreen.dart';
 
 class MLOnlinePharmacyScreen extends StatefulWidget {
   static String tag = '/MLOnlinePharmacyScreen';
@@ -99,11 +100,12 @@ class MLOnlinePharmacyScreenState extends State<MLOnlinePharmacyScreen> {
                 ),
               ),
             ),
+
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
                   if (index == 0) {
-                    return const MLPharmacyCategoriesComponent();
+                    return const MLOnlinePharmacyDetailScreen(index: 0,);
                   }
                   return null;
                 },
