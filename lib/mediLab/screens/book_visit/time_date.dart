@@ -17,7 +17,7 @@ class WidgetPage extends StatefulWidget {
 }
 
 class _WidgetPageState extends State<WidgetPage> {
-  DateTime? _selectedDate;
+  DateTime? _selectedDate=DateTime.now();
   VisitController controller = Get.put(VisitController());
 
   @override

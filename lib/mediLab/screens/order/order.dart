@@ -1032,6 +1032,7 @@ class _OrderRequestState extends State<OrderRequest> {
                                   'nickName': nickName.text,
                                   'statue': statue.text,
                                   'religion': deyana.text,
+                                  'country': country.text,
                                   'education': edu.text,
                                   'career': jop.text,
                                   'phone': phone.text,
