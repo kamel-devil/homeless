@@ -5,6 +5,7 @@ import '../components/MLAddPaymentListComponent.dart';
 import '../components/MLBookedDailog.dart';
 import '../utils/MLColors.dart';
 import '../utils/MLCommon.dart';
+import 'sponsorship_conditions/DTPaymentScreen.dart';
 class MLAddPaymentScreen extends StatefulWidget {
   static String tag = '/MLAddPaymentScreen';
 
@@ -62,7 +63,13 @@ class MLAddPaymentScreenState extends State<MLAddPaymentScreen> {
                               8.width,
                               Icon(Icons.add_circle_outline, color: mlColorDarkBlue, size: 16),
                             ],
-                          ),
+                          ).onTap((){
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        DTPaymentScreen()));
+                          }),
                         ),
                       ],
                     ),

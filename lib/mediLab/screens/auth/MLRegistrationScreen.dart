@@ -238,6 +238,7 @@ class _MLRegistrationScreenState extends State<MLRegistrationScreen> {
     addUser?.doc('${user?.uid}').set({
       'email': email.text,
       'name': name.text,
+      'isUser':true,
       'Phone': phone.text,
       'id': user?.uid,
       'image': 'null',

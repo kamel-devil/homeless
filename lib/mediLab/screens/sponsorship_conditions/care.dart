@@ -4,29 +4,18 @@ import 'package:nb_utils/nb_utils.dart';
 import '../../../main.dart';
 import '../MLAddPaymentScreen.dart';
 
-class Fitness extends StatelessWidget {
-  Fitness({Key? key}) : super(key: key);
+class Care extends StatelessWidget {
+  Care({Key? key}) : super(key: key);
   List text = [
-    {'image':'https://watanimg.elwatannews.com/image_archive/original_lower_quality/16313314661637689683.jpg',
-    'title':'كرة قدم',
-    'subTitle':'لقد حقق فريقنا المركز الاول في مسابقه كرة القدم',
+    {'image':'https://static.dw.com/image/56160022_6.jpg',
+      'title':'تطعيمات الاطفال',
+      'subTitle':'لقد طعمنا اكثر من 100 طفل ',
     },
-    {'image':'https://watanimg.elwatannews.com/image_archive/original_lower_quality/16313314661637689683.jpg',
-    'title':'كرة سله',
-    'subTitle':'لقد حقق فريقنا المركز الثاني في مسابقه كرة سله',
+    {'image':'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIYWMeeYz_Npj8fKXTa7kmHtB62oiDWZtXxQ&usqp=CAU',
+      'title':'رعايه',
+      'subTitle':'نقوم برعايه المسنين',
     },
-    {'image':'https://watanimg.elwatannews.com/image_archive/original_lower_quality/16313314661637689683.jpg',
-    'title':'كرة تنس',
-    'subTitle':'لقد حقق فريقنا المركز الثالث في مسابقه كرة تنس',
-    },
-    {'image':'https://watanimg.elwatannews.com/image_archive/original_lower_quality/16313314661637689683.jpg',
-    'title':'كراتيه',
-    'subTitle':'لقد حقق فريقنا المركز الاول في مسابقه كراتيه',
-    },
-    {'image':'https://watanimg.elwatannews.com/image_archive/original_lower_quality/16313314661637689683.jpg',
-    'title':'كونك فو',
-    'subTitle':'لقد حقق فريقنا المركز الخامس في مسابقه كونك فو',
-    },
+
   ];
 
   @override
@@ -63,7 +52,7 @@ class Fitness extends StatelessWidget {
                             height: 50,
                           ),
                           const Text(
-                            'النشاطات ',
+                            'الرعاية ',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 fontSize: 25,
@@ -93,7 +82,7 @@ class Fitness extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 16, right: 16),
                                   child: Text(
-                                      text[index]['title'],
+                                    text[index]['title'],
                                     style: boldTextStyle(size: 20, color: appStore.textPrimaryColor),
                                   ),
                                 ),
@@ -101,7 +90,7 @@ class Fitness extends StatelessWidget {
                                 Padding(
                                   padding: const EdgeInsets.only(left: 16, right: 16),
                                   child: Text(
-                                      text[index]['subTitle'],
+                                    text[index]['subTitle'],
 
                                     style: secondaryTextStyle(size: 16, color: appStore.textSecondaryColor),
                                   ),
@@ -120,7 +109,7 @@ class Fitness extends StatelessWidget {
                               context,
                               MaterialPageRoute(
                                   builder: (context) =>
-                                   MLAddPaymentScreen()));
+                                      MLAddPaymentScreen()));
                         },
                         child: Container(
                           height: 60,

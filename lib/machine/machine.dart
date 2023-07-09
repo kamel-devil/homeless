@@ -70,19 +70,9 @@ class _MachineScreenState extends State<MachineScreen> {
       appBar: AppBar(
         backgroundColor: Colors.redAccent,
         elevation: 0,
-        title: Row(
-          children: [
-            const Icon(Icons.arrow_back_ios, color: Colors.white, size: 24)
-                .onTap(() {}),
-            Row(
-              children: [
-                Text('رجوع',
-                    style: boldTextStyle(size: 24, color: Colors.white)),
-                8.width,
-              ],
-            )
-          ],
-        ).paddingAll(16.0),
+        title:   Text('افحص الان ',
+            style: boldTextStyle(size: 24, color: Colors.white)),
+centerTitle: true,
       ),
       body: Container(
         decoration: const BoxDecoration(),

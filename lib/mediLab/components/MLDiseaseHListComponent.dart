@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 
+import '../../machine/machine.dart';
 import '../model/MLDiseaseData.dart';
 import '../utils/MLColors.dart';
 import '../utils/MLDataProvider.dart';
 
 class MLDiseaseHorizontalList extends StatefulWidget {
   static String tag = '/MLDiseaseHorizontalList';
+
+  const MLDiseaseHorizontalList({super.key});
 
   @override
   MLDiseaseHorizontalListState createState() => MLDiseaseHorizontalListState();
@@ -35,11 +38,11 @@ class MLDiseaseHorizontalListState extends State<MLDiseaseHorizontalList> {
     return HorizontalList(
         wrapAlignment: WrapAlignment.spaceEvenly,
         itemCount: listDisease.length,
-        padding: EdgeInsets.only(right: 16, left: 8),
+        padding: const EdgeInsets.only(right: 16, left: 8),
         itemBuilder: (BuildContext context, int index) {
           return Container(
             width: 150,
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             decoration: boxDecorationWithRoundedCorners(
               borderRadius: radius(12),
               border: Border.all(color: Colors.grey.shade100),
@@ -55,7 +58,13 @@ class MLDiseaseHorizontalListState extends State<MLDiseaseHorizontalList> {
                 4.height,
               ],
             ),
-          ).paddingOnly(left: 8);
+          ).paddingOnly(left: 8).onTap((){
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        const MachineScreen()));
+          });
         });
   }
 }

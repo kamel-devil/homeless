@@ -10,6 +10,7 @@ import 'package:latlong2/latlong.dart';
 import 'package:lottie/lottie.dart' as lo;
 
 import '../../components/custom_shape.dart';
+import '../house_info/hospital_info.dart';
 
 class MapPage extends StatefulWidget {
   MapPage({Key? key}) : super(key: key);
@@ -135,7 +136,9 @@ class _MapPageState extends State<MapPage> with TickerProviderStateMixin {
                               point: LatLng(double.parse('${e['late']}'),
                                   double.parse('${e['long']}')),
                               builder: (BuildContext context) => InkWell(
-                                    onTap: () {},
+                                    onTap: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => HospitalInfo(uid:e['uid'], email: e['email'],),));
+                                    },
                                     child: Stack(
                                       children: [
                                         CustomPaint(
@@ -189,62 +192,6 @@ class _MapPageState extends State<MapPage> with TickerProviderStateMixin {
                     return const CircularProgressIndicator();
                   }
                 }),
-            Container(
-              height: 240,
-              decoration: const BoxDecoration(color: Colors.transparent),
-              padding: const EdgeInsets.only(left: 10, right: 10, bottom: 20),
-              child: Column(
-                children: [
-                  const SizedBox(
-                    height: 80,
-                  ),
-                  Container(
-                      height: 60,
-                      margin: const EdgeInsets.only(left: 15),
-                      child: ListView.separated(
-                        shrinkWrap: true,
-                        separatorBuilder: (context, index) => const SizedBox(
-                          width: 15,
-                        ),
-                        scrollDirection: Axis.horizontal,
-                        itemCount: type.length,
-                        itemBuilder: (context, index) => ElevatedButton.icon(
-                          onPressed: () {
-                            setState(() {
-                              typeIndex = index;
-                              typeHospital = type1[index];
-                            });
-                          },
-                          icon: const Icon(
-                            Icons.local_hospital,
-                            color: Colors.white,
-                            size: 27.0,
-                          ),
-                          label: Text(
-                            type[index],
-                            style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.w900,
-                                fontSize: 15),
-                          ),
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                  typeIndex == index
-                                      ? Colors.teal.shade400.withOpacity(0.5)
-                                      : Colors.white10),
-                              shape: MaterialStateProperty.all(
-                                  RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(15),
-                                      side: const BorderSide(
-                                          color: Colors.black)))),
-                        ),
-                      )),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                ],
-              ),
-            ),
             Positioned(
                 bottom: 40,
                 right: 15,

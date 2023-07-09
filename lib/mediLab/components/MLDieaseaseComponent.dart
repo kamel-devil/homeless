@@ -42,19 +42,6 @@ class MLDieaseaseComponentState extends State<MLDieaseaseComponent> {
           16.height,
           Row(
             children: [
-              Text('التخصصات', style: boldTextStyle(size: 18)).expand(),
-              Text(mlView_all!, style: secondaryTextStyle(color: mlColorBlue, size: 16)),
-              4.width,
-              Icon(Icons.arrow_forward_ios, color: mlColorBlue, size: 12),
-            ],
-          ).paddingAll(16.0).onTap(() {
-            MLSpecialistScreen().launch(context);
-          }),
-          MLSpecialistHorizontalList(),
-          16.height,
-          MLSpecialistHorizontalList(),
-          Row(
-            children: [
               Text('التخصصات الشائعه', style: boldTextStyle(size: 18)).expand(),
               Text(mlView_all!, style: secondaryTextStyle(color: mlColorBlue, size: 16)),
               4.width,

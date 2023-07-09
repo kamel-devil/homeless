@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 import '../../../main.dart';
+import '../MLAddPaymentScreen.dart';
 
 class Learning extends StatelessWidget {
   Learning({Key? key}) : super(key: key);
@@ -106,7 +107,45 @@ class Learning extends StatelessWidget {
                       ),
                     ),
                     itemCount: text.length,
-                  )
+                  ),
+                  10.height,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  MLAddPaymentScreen()));
+                    },
+                    child: Container(
+                      height: 60,
+                      width: double.infinity,
+                      margin:
+                      const EdgeInsets.symmetric(horizontal: 40),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                                blurRadius: 4,
+                                color: Colors.black12.withOpacity(.2),
+                                offset: const Offset(2, 2))
+                          ],
+                          borderRadius: BorderRadius.circular(20)
+                              .copyWith(
+                              bottomRight:
+                              const Radius.circular(0)),
+                          gradient: LinearGradient(colors: [
+                            Colors.redAccent.shade200,
+                            Colors.red.shade900
+                          ])),
+                      child: Text('ادعم الان',
+                          style: TextStyle(
+                              color: Colors.white.withOpacity(.8),
+                              fontSize: 20,
+                              fontWeight: FontWeight.w900)),
+                    ),
+                  ),
+
                 ],
               ),
             ),

@@ -2,13 +2,17 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../nicu_chat/api/apis.dart';
+import '../nicu_chat/helper/dialogs.dart';
+import '../nicu_chat/screens/home_screen.dart';
 import 'component/cache_image.dart';
 import 'component/to_map.dart';
 
 class HospitalInfo extends StatefulWidget {
-  HospitalInfo({super.key, required this.uid});
+  HospitalInfo({super.key, required this.uid, required this.email});
 
-  String uid;
+  final String uid;
+  final String email;
 
   @override
   _HospitalInfoState createState() => _HospitalInfoState();
@@ -19,17 +23,18 @@ class _HospitalInfoState extends State<HospitalInfo> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).splashColor,
+        backgroundColor:Colors.redAccent,
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: Theme.of(context).splashColor,
+          backgroundColor: Colors.redAccent,
           centerTitle: true,
-          title: Text(
+          title: const Text(
             'House Information',
             style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 25,
-                color: Theme.of(context).secondaryHeaderColor),
+                color: Colors.black),
+
           ),
         ),
         body: Container(
@@ -83,11 +88,11 @@ class _HospitalInfoState extends State<HospitalInfo> {
                                     Text(
                                       data['name'],
                                       maxLines: 3,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
-                                          color: Theme.of(context)
-                                              .secondaryHeaderColor),
+                                          color: Colors.black),
+
                                     ),
                                     const SizedBox(
                                       height: 10,
@@ -109,10 +114,10 @@ class _HospitalInfoState extends State<HospitalInfo> {
                                           width: 10,
                                         ),
                                         Text(data['phone'],
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontSize: 20,
-                                                color: Theme.of(context)
-                                                    .secondaryHeaderColor)),
+                                                color: Colors.black),
+                                        ),
                                       ],
                                     ),
                                     const SizedBox(
@@ -139,10 +144,10 @@ class _HospitalInfoState extends State<HospitalInfo> {
                                         Flexible(
                                           child: Text(data['address'],
                                               maxLines: 4,
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   fontSize: 20,
-                                                  color: Theme.of(context)
-                                                      .secondaryHeaderColor)),
+                                                  color: Colors.black),
+                                          ),
                                         ),
                                       ],
                                     ),
@@ -161,10 +166,10 @@ class _HospitalInfoState extends State<HospitalInfo> {
                                         ),
                                         Text(data['open'],
                                             maxLines: 3,
-                                            style: TextStyle(
+                                            style: const TextStyle(
                                                 fontSize: 20,
-                                                color: Theme.of(context)
-                                                    .secondaryHeaderColor))
+                                                color: Colors.black),
+                                        )
                                       ],
                                     ),
                                     const SizedBox(
@@ -188,15 +193,15 @@ class _HospitalInfoState extends State<HospitalInfo> {
                             color: Colors.white54,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10)),
-                            child: Padding(
-                              padding: const EdgeInsets.all(10),
+                            child: const Padding(
+                              padding: EdgeInsets.all(10),
                               child: Text(
                                 "Availability",
                                 style: TextStyle(
                                     fontSize: 22,
                                     fontWeight: FontWeight.bold,
-                                    color:
-                                        Theme.of(context).secondaryHeaderColor),
+                                    color: Colors.black),
+
                               ),
                             ),
                           ),
@@ -207,7 +212,7 @@ class _HospitalInfoState extends State<HospitalInfo> {
                             width: 20,
                             height: 20,
                             decoration: BoxDecoration(
-                                color: data['availability'] == 'true'
+                                color: data['availability'] == 'True'
                                     ? Colors.green
                                     : Colors.red,
                                 borderRadius: BorderRadius.circular(50)),
@@ -217,21 +222,21 @@ class _HospitalInfoState extends State<HospitalInfo> {
                       const SizedBox(
                         height: 16,
                       ),
-                      Text(
+                      const Text(
                         "About",
                         style: TextStyle(
                             fontSize: 22,
                             fontWeight: FontWeight.bold,
-                            color: Theme.of(context).secondaryHeaderColor),
+                            color: Colors.black),
                       ),
                       const SizedBox(
                         height: 16,
                       ),
-                      Text(
+                      const Text(
                         "Dr. Stefeni Albert is a cardiologist in Nashville & affiliated with multiple hospitals in the  area.He received his medical degree from Duke University School of Medicine and has been in practice for more than 20 years. ",
                         style: TextStyle(
                             fontSize: 16,
-                            color: Theme.of(context).secondaryHeaderColor),
+                            color: Colors.black),
                       ),
                       const SizedBox(
                         height: 24,
@@ -250,7 +255,7 @@ class _HospitalInfoState extends State<HospitalInfo> {
                                   borderRadius: BorderRadius.circular(10),
                                 ),
                                 elevation: 2,
-                                color: Colors.white,
+                                color: Colors.redAccent,
                                 child: ClipRRect(
                                     borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(10),
@@ -273,13 +278,29 @@ class _HospitalInfoState extends State<HospitalInfo> {
             ),
           ),
         ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.redAccent,
+          onPressed: () async {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const HomeChat()));
+            if (widget.email.isNotEmpty) {
+              await APIs.addChatUser(widget.email).then((value) {
+                if (!value) {
+                  Dialogs.showSnackbar(context, 'User does not Exists!');
+                }
+              });
+            }
+          },
+          child: const Icon(Icons.chat),
+        ),
+
       ),
     );
   }
 
   Future getProfileData(String uid) async {
     var firestore = FirebaseFirestore.instance;
-    CollectionReference qn = firestore.collection("hospital");
+    CollectionReference qn = firestore.collection("home");
     DocumentReference itemIdRef = qn.doc(uid);
     DocumentSnapshot itemIdSnapshot = await itemIdRef.get();
     return itemIdSnapshot;
@@ -288,7 +309,7 @@ class _HospitalInfoState extends State<HospitalInfo> {
   Future getProfileReview(String uid) async {
     var firestore = FirebaseFirestore.instance;
     QuerySnapshot qn = await firestore
-        .collection("hospital")
+        .collection("home")
         .doc(uid)
         .collection('review')
         .get();

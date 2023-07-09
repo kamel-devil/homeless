@@ -147,10 +147,10 @@ class APIs {
         lastActive: time,
         pushToken: '');
 
-    return await firestore
-        .collection('users')
-        .doc(user.uid)
-        .set(chatUser.toJson());
+    return await firestore.collection('users').doc(user.uid).set({
+      ...chatUser.toJson(),
+      'isUser': true,
+    });
   }
 
   // for getting id's of known users from firestore database

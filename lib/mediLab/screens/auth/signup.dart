@@ -96,8 +96,8 @@ class _HomepageState extends State<Homepage> {
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.pink.shade600,
-                                shadows: [
-                                  const Shadow(
+                                shadows: const [
+                                  Shadow(
                                       color: Colors.black45,
                                       offset: Offset(1, 1),
                                       blurRadius: 5)

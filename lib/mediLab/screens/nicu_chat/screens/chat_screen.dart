@@ -58,6 +58,7 @@ class _ChatScreenState extends State<ChatScreen> {
             appBar: AppBar(
               automaticallyImplyLeading: false,
               flexibleSpace: _appBar(),
+              backgroundColor: Colors.redAccent,
             ),
 
             backgroundColor: const Color.fromARGB(255, 234, 248, 255),
@@ -163,6 +164,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
                   //user profile picture
                   ClipRRect(
+
                     borderRadius: BorderRadius.circular(mq.height * .03),
                     child: CachedNetworkImage(
                       width: mq.height * .05,
@@ -233,7 +235,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         setState(() => _showEmoji = !_showEmoji);
                       },
                       icon: const Icon(Icons.emoji_emotions,
-                          color: Colors.blueAccent, size: 25)),
+                          color: Colors.redAccent, size: 25)),
 
                   Expanded(
                       child: TextField(
@@ -245,7 +247,7 @@ class _ChatScreenState extends State<ChatScreen> {
                     },
                     decoration: const InputDecoration(
                         hintText: 'Type Something...',
-                        hintStyle: TextStyle(color: Colors.blueAccent),
+                        hintStyle: TextStyle(color: Colors.redAccent),
                         border: InputBorder.none),
                   )),
 
@@ -267,7 +269,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         }
                       },
                       icon: const Icon(Icons.image,
-                          color: Colors.blueAccent, size: 26)),
+                          color: Colors.redAccent, size: 26)),
 
                   //take image from camera button
                   IconButton(
@@ -287,7 +289,7 @@ class _ChatScreenState extends State<ChatScreen> {
                         }
                       },
                       icon: const Icon(Icons.camera_alt_rounded,
-                          color: Colors.blueAccent, size: 26)),
+                          color: Colors.redAccent, size: 26)),
 
                   //adding some space
                   SizedBox(width: mq.width * .02),
@@ -316,8 +318,11 @@ class _ChatScreenState extends State<ChatScreen> {
             padding:
                 const EdgeInsets.only(top: 10, bottom: 10, right: 5, left: 10),
             shape: const CircleBorder(),
-            color: Colors.green,
-            child: const Icon(Icons.send, color: Colors.white, size: 28),
+            color: Colors.redAccent,
+            child: const Center(child: Padding(
+              padding: EdgeInsets.only(right: 6.0),
+              child: Icon(Icons.send, color: Colors.white, size: 28),
+            )),
           )
         ],
       ),

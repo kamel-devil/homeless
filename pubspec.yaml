@@ -99,6 +99,7 @@ flutter:
     - images/mediLab/images/
     - assets/model_unquant.tflite
     - assets/labels.txt
+    - assets/
 
 
 

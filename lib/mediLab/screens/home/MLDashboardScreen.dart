@@ -11,6 +11,7 @@ import '../../fragments/MLHomeFragment.dart';
 import '../../fragments/MLNotificationFragment.dart';
 import '../../fragments/MLProfileFragemnt.dart';
 import '../map/map.dart';
+import '../nicu_chat/screens/home_screen.dart';
 
 class MLDashboardScreen extends StatefulWidget {
   static String tag = '/MLDashboardScreen';
@@ -26,7 +27,7 @@ class _MLDashboardScreenState extends State<MLDashboardScreen> {
   bool isMaped = false;
   List<Widget> widgets = [
     const MLHomeFragment(),
-    MLChatFragment(),
+    const HomeChat(),
     MLCalendarFragment(),
     MLProfileFragment(),
   ];

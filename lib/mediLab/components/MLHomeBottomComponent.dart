@@ -1,15 +1,20 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 import '../model/MLDepartmentData.dart';
 import '../model/MLTopHospitalData.dart';
+import '../screens/house_info/hospital_info.dart';
+import '../screens/sponsorship_conditions/care.dart';
 import '../screens/sponsorship_conditions/fitness.dart';
 import '../screens/sponsorship_conditions/learning.dart';
 import '../screens/sponsorship_conditions/sponsorship_conditions.dart';
 import '../utils/MLColors.dart';
 import '../utils/MLDataProvider.dart';
 import '../utils/MLString.dart';
+
+
 
 class MLHomeBottomComponent extends StatefulWidget {
   static String tag = '/MLHomeBottomComponent';
@@ -71,6 +76,10 @@ class MLHomeBottomComponentState extends State<MLHomeBottomComponent> {
                   Get.to(Learning(),
                       duration: const Duration(seconds: 1),
                       transition: Transition.fadeIn);
+                }else{
+                  Get.to(Care(),
+                      duration: const Duration(seconds: 1),
+                      transition: Transition.fadeIn);
                 }
               },
               child: Container(
@@ -81,13 +90,10 @@ class MLHomeBottomComponentState extends State<MLHomeBottomComponent> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Image.asset((departmentList[index].image).validate(),
-                            height: 80, width: 80, fit: BoxFit.fill)
+                        height: 80, width: 80, fit: BoxFit.fill)
                         .paddingAll(8.0),
                     Text((departmentList[index].title).validate(),
                         style: boldTextStyle()),
-                    4.height,
-                    Text((departmentList[index].subtitle).validate(),
-                        style: secondaryTextStyle()),
                     8.height,
                   ],
                 ),
@@ -103,34 +109,56 @@ class MLHomeBottomComponentState extends State<MLHomeBottomComponent> {
             Icon(Icons.keyboard_arrow_right, color: mlColorBlue, size: 16),
           ],
         ).paddingAll(16.0),
-        HorizontalList(
-            padding: const EdgeInsets.only(right: 16.0, left: 8.0),
-            wrapAlignment: WrapAlignment.spaceBetween,
-            itemCount: tophospitalList.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Container(
-                margin: const EdgeInsets.only(bottom: 8, left: 8),
-                decoration: boxDecorationRoundedWithShadow(12),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Image.asset((tophospitalList[index].image).validate(),
-                            height: 140, width: 250, fit: BoxFit.fill)
-                        .cornerRadiusWithClipRRectOnly(topLeft: 8, topRight: 8),
-                    8.height,
-                    Text((tophospitalList[index].title).validate(),
-                            style: boldTextStyle())
-                        .paddingOnly(left: 8.0),
-                    4.height,
-                    Text((tophospitalList[index].subtitle).validate(),
-                            style: secondaryTextStyle())
-                        .paddingOnly(left: 8.0),
-                    10.height
-                  ],
-                ),
-              );
-            }),
+        FutureBuilder(
+            future:getData() ,
+            builder: (context,snapshot) {
+              if(snapshot.hasData){
+                List getData =snapshot.data as List;
+                return HorizontalList(
+                    padding: const EdgeInsets.only(right: 16.0, left: 8.0),
+                    wrapAlignment: WrapAlignment.spaceBetween,
+                    itemCount: getData.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return InkWell(
+                        onTap: (){
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => HospitalInfo(uid:getData[index]['uid'], email: getData[index]['email'],),));
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.only(bottom: 8, left: 8),
+                          decoration: boxDecorationRoundedWithShadow(12),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Image.network((getData[index]['profile']),
+                                  height: 140, width: 250, fit: BoxFit.fill)
+                                  .cornerRadiusWithClipRRectOnly(topLeft: 8, topRight: 8),
+                              8.height,
+                              Text((getData[index]['name']),
+                                  style: boldTextStyle())
+                                  .paddingOnly(left: 8.0),
+                              4.height,
+                              Text((getData[index]['address']),
+                                  style: secondaryTextStyle())
+                                  .paddingOnly(left: 8.0),
+                              10.height
+                            ],
+                          ),
+                        ),
+                      );
+                    });
+
+              }else{
+                return const Center(child: CircularProgressIndicator());
+              }
+            }
+        ),
       ],
     );
   }
+  getData() async {
+    QuerySnapshot data =
+    await FirebaseFirestore.instance.collection('home').get();
+    return data.docs;
+  }
+
 }
