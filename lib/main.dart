@@ -7,7 +7,6 @@ import 'package:google_fonts/google_fonts.dart';
 
 import 'mediLab/screens/auth/MLLoginScreen.dart';
 import 'mediLab/screens/home/MLDashboardScreen.dart';
-import 'mediLab/screens/nicu_chat/screens/auth/login_screen.dart';
 import 'mediLab/store/AppStore.dart';
 
 AppStore appStore = AppStore();
@@ -33,9 +32,9 @@ class MyApp extends StatelessWidget {
           fontFamily: 'Amiri',
           primarySwatch: Colors.blue,
           textTheme: TextTheme(titleMedium: GoogleFonts.abel())),
-      home:
-      FirebaseAuth.instance.currentUser !=null ?const MLDashboardScreen():
-      const MLLoginScreen(),
+      home: FirebaseAuth.instance.currentUser != null
+          ? const MLDashboardScreen()
+          : const MLLoginScreen(),
     );
   }
 }

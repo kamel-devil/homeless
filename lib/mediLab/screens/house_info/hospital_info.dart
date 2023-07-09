@@ -1,7 +1,13 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../home/MLDashboardScreen.dart';
 import '../nicu_chat/api/apis.dart';
 import '../nicu_chat/helper/dialogs.dart';
 import '../nicu_chat/screens/home_screen.dart';
@@ -9,10 +15,17 @@ import 'component/cache_image.dart';
 import 'component/to_map.dart';
 
 class HospitalInfo extends StatefulWidget {
-  HospitalInfo({super.key, required this.uid, required this.email});
+  HospitalInfo(
+      {super.key,
+      required this.uid,
+      required this.email,
+      this.report = false,
+      this.file});
 
   final String uid;
   final String email;
+  final bool report;
+  final File? file;
 
   @override
   _HospitalInfoState createState() => _HospitalInfoState();
@@ -23,7 +36,7 @@ class _HospitalInfoState extends State<HospitalInfo> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor:Colors.redAccent,
+        backgroundColor: Colors.redAccent,
         appBar: AppBar(
           elevation: 0,
           backgroundColor: Colors.redAccent,
@@ -31,11 +44,63 @@ class _HospitalInfoState extends State<HospitalInfo> {
           title: const Text(
             'House Information',
             style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 25,
-                color: Colors.black),
-
+                fontWeight: FontWeight.bold, fontSize: 25, color: Colors.black),
           ),
+          actions: [
+            widget.report
+                ? GestureDetector(
+                    onTap: () async {
+                      CollectionReference addPost = FirebaseFirestore.instance
+                          .collection('home')
+                          .doc(widget.uid)
+                          .collection('reports');
+                      var currentUser = FirebaseAuth.instance.currentUser?.uid;
+
+                      var imageName = basename(widget.file!.path);
+                      var ref =
+                          FirebaseStorage.instance.ref('images/$imageName');
+                      await ref.putFile(widget.file!);
+                      String imageUrl = await ref.getDownloadURL();
+                      addPost.add({
+                        'imageurl': imageUrl,
+                        'user': currentUser,
+                        'id': widget.uid,
+                        'email': widget.email
+                      }).then((value) {
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const MLDashboardScreen()));
+                      });
+                    },
+                    child: Container(
+                      height: 60,
+                      width: 90,
+                      margin: const EdgeInsets.symmetric(horizontal: 40),
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                                blurRadius: 4,
+                                color: Colors.black12.withOpacity(.2),
+                                offset: const Offset(2, 2))
+                          ],
+                          borderRadius: BorderRadius.circular(20)
+                              .copyWith(bottomRight: const Radius.circular(0)),
+                          gradient: LinearGradient(colors: [
+                            Colors.redAccent.shade200,
+                            Colors.red.shade900
+                          ])),
+                      child: Text('ابلاغ',
+                          style: TextStyle(
+                              color: Colors.white.withOpacity(.8),
+                              fontSize: 20,
+                              fontWeight: FontWeight.w900)),
+                    ),
+                  )
+                : Container(),
+          ],
         ),
         body: Container(
           height: double.infinity,
@@ -92,7 +157,6 @@ class _HospitalInfoState extends State<HospitalInfo> {
                                           fontSize: 20,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.black),
-
                                     ),
                                     const SizedBox(
                                       height: 10,
@@ -113,10 +177,11 @@ class _HospitalInfoState extends State<HospitalInfo> {
                                         const SizedBox(
                                           width: 10,
                                         ),
-                                        Text(data['phone'],
-                                            style: const TextStyle(
-                                                fontSize: 20,
-                                                color: Colors.black),
+                                        Text(
+                                          data['phone'],
+                                          style: const TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.black),
                                         ),
                                       ],
                                     ),
@@ -142,11 +207,12 @@ class _HospitalInfoState extends State<HospitalInfo> {
                                           width: 10,
                                         ),
                                         Flexible(
-                                          child: Text(data['address'],
-                                              maxLines: 4,
-                                              style: const TextStyle(
-                                                  fontSize: 20,
-                                                  color: Colors.black),
+                                          child: Text(
+                                            data['address'],
+                                            maxLines: 4,
+                                            style: const TextStyle(
+                                                fontSize: 20,
+                                                color: Colors.black),
                                           ),
                                         ),
                                       ],
@@ -164,11 +230,12 @@ class _HospitalInfoState extends State<HospitalInfo> {
                                         const SizedBox(
                                           width: 10,
                                         ),
-                                        Text(data['open'],
-                                            maxLines: 3,
-                                            style: const TextStyle(
-                                                fontSize: 20,
-                                                color: Colors.black),
+                                        Text(
+                                          data['open'],
+                                          maxLines: 3,
+                                          style: const TextStyle(
+                                              fontSize: 20,
+                                              color: Colors.black),
                                         )
                                       ],
                                     ),
@@ -201,7 +268,6 @@ class _HospitalInfoState extends State<HospitalInfo> {
                                     fontSize: 22,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black),
-
                               ),
                             ),
                           ),
@@ -234,9 +300,7 @@ class _HospitalInfoState extends State<HospitalInfo> {
                       ),
                       const Text(
                         "Dr. Stefeni Albert is a cardiologist in Nashville & affiliated with multiple hospitals in the  area.He received his medical degree from Duke University School of Medicine and has been in practice for more than 20 years. ",
-                        style: TextStyle(
-                            fontSize: 16,
-                            color: Colors.black),
+                        style: TextStyle(fontSize: 16, color: Colors.black),
                       ),
                       const SizedBox(
                         height: 24,
@@ -293,7 +357,6 @@ class _HospitalInfoState extends State<HospitalInfo> {
           },
           child: const Icon(Icons.chat),
         ),
-
       ),
     );
   }
@@ -308,11 +371,8 @@ class _HospitalInfoState extends State<HospitalInfo> {
 
   Future getProfileReview(String uid) async {
     var firestore = FirebaseFirestore.instance;
-    QuerySnapshot qn = await firestore
-        .collection("home")
-        .doc(uid)
-        .collection('review')
-        .get();
+    QuerySnapshot qn =
+        await firestore.collection("home").doc(uid).collection('review').get();
     return qn.docs;
   }
 }
