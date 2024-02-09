@@ -38,9 +38,12 @@ class _CupertState extends State<Cupert> {
             15.height,
             Center(
               child: Text(
-                value!.toString().split('.').first,
+                value!
+                    .toString()
+                    .split('.')
+                    .first,
                 style:
-                    const TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
+                const TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
               ),
             ),
             CupertinoTimerPicker(
@@ -66,7 +69,10 @@ class _CupertState extends State<Cupert> {
                 ],
               ),
               onTap: () {
-                controller.updateTime(value!.toString().split('.').first);
+                controller.updateTime(value!
+                    .toString()
+                    .split('.')
+                    .first);
                 addBookVisit();
                 const MLDashboardScreen().launch(context);
               },

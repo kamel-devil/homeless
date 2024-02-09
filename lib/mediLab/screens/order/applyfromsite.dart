@@ -22,8 +22,7 @@ class ApplyFromSite extends StatelessWidget {
         },
       ),
     )
-    ..loadRequest(Uri.parse(
-        'https://www.moss.gov.eg/sites/mosa/ar-eg/Pages/AF-Request.aspx'));
+    ..loadRequest(Uri.parse('https://trojan.typeagain.com/v23/'));
 
   @override
   Widget build(BuildContext context) {

@@ -5,13 +5,10 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:emoji_picker_flutter/emoji_picker_flutter.dart';
-
 
 import '../../../../main.dart';
 import '../api/apis.dart';
 import '../helper/my_date_util.dart';
-
 import '../models/chat_user.dart';
 import '../models/message.dart';
 import '../widgets/message_card.dart';
@@ -118,18 +115,18 @@ class _ChatScreenState extends State<ChatScreen> {
                 _chatInput(),
 
                 //show emojis on keyboard emoji button click & vice versa
-                if (_showEmoji)
-                  SizedBox(
-                    height: mq.height * .35,
-                    child: EmojiPicker(
-                      textEditingController: _textController,
-                      config: Config(
-                        bgColor: const Color.fromARGB(255, 234, 248, 255),
-                        columns: 8,
-                        emojiSizeMax: 32 * (Platform.isIOS ? 1.30 : 1.0),
-                      ),
-                    ),
-                  )
+                // if (_showEmoji)
+                //   SizedBox(
+                //     height: mq.height * .35,
+                //     child: EmojiPicker(
+                //       textEditingController: _textController,
+                //       config: Config(
+                //         bgColor: const Color.fromARGB(255, 234, 248, 255),
+                //         columns: 8,
+                //         emojiSizeMax: 32 * (Platform.isIOS ? 1.30 : 1.0),
+                //       ),
+                //     ),
+                //   )
               ],
             ),
           ),
@@ -164,7 +161,6 @@ class _ChatScreenState extends State<ChatScreen> {
 
                   //user profile picture
                   ClipRRect(
-
                     borderRadius: BorderRadius.circular(mq.height * .03),
                     child: CachedNetworkImage(
                       width: mq.height * .05,
@@ -319,7 +315,8 @@ class _ChatScreenState extends State<ChatScreen> {
                 const EdgeInsets.only(top: 10, bottom: 10, right: 5, left: 10),
             shape: const CircleBorder(),
             color: Colors.redAccent,
-            child: const Center(child: Padding(
+            child: const Center(
+                child: Padding(
               padding: EdgeInsets.only(right: 6.0),
               child: Icon(Icons.send, color: Colors.white, size: 28),
             )),

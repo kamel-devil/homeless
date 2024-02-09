@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:awesome_dialog/awesome_dialog.dart' as dialog;
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -184,24 +183,24 @@ class _MLLoginScreenState extends State<MLLoginScreen> {
       }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        dialog.AwesomeDialog(
-          context: context,
-          dialogType: dialog.DialogType.INFO,
-          animType: dialog.AnimType.BOTTOMSLIDE,
-          title: 'Attend  !',
-          desc: 'This Account IsNot Exist',
-          btnCancelOnPress: () {},
-          btnOkOnPress: () {},
-        ).show();
+        // dialog.AwesomeDialog(
+        //   context: context,
+        //   dialogType:dialog.DialogTyp,
+        //   animType: dialog.AnimType,
+        //   title: 'Attend  !',
+        //   desc: 'This Account IsNot Exist',
+        //   btnCancelOnPress: () {},
+        //   btnOkOnPress: () {},
+        // ).show();
       } else if (e.code == 'wrong-password') {
-        dialog.AwesomeDialog(
-          context: context,
-          dialogType: dialog.DialogType.INFO,
-          animType: dialog.AnimType.BOTTOMSLIDE,
-          title: 'Attend  !',
-          desc: 'The password is Wrong',
-          btnOkOnPress: () {},
-        ).show();
+        // dialog.AwesomeDialog(
+        //   context: context,
+        //   dialogType: dialog.DialogType.INFO,
+        //   animType: dialog.AnimType.BOTTOMSLIDE,
+        //   title: 'Attend  !',
+        //   desc: 'The password is Wrong',
+        //   btnOkOnPress: () {},
+        // ).show();
       }
     } catch (e) {
       print(e);

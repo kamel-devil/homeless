@@ -6,9 +6,7 @@ import 'package:nb_utils/nb_utils.dart';
 import '../../components/MLBottomNavigationBarWidget.dart';
 import '../../controller/controller.dart';
 import '../../fragments/MLCalendarFragment.dart';
-import '../../fragments/MLChatFragment.dart';
 import '../../fragments/MLHomeFragment.dart';
-import '../../fragments/MLNotificationFragment.dart';
 import '../../fragments/MLProfileFragemnt.dart';
 import '../map/map.dart';
 import '../nicu_chat/screens/home_screen.dart';
@@ -25,6 +23,7 @@ class MLDashboardScreen extends StatefulWidget {
 class _MLDashboardScreenState extends State<MLDashboardScreen> {
   int currentWidget = 0;
   bool isMaped = false;
+
   List<Widget> widgets = [
     const MLHomeFragment(),
     const HomeChat(),

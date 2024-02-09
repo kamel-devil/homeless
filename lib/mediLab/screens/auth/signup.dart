@@ -14,10 +14,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           primarySwatch: Colors.pink,
-          accentColor: Colors.pink,
+          hintColor: Colors.pink,
           primaryColor: Colors.pink,
-          focusColor: Colors.pink,
-          buttonColor: Colors.pink),
+          focusColor: Colors.pink),
       home: const Homepage(),
     );
   }

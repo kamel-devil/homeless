@@ -1,4 +1,3 @@
-import 'package:awesome_dialog/awesome_dialog.dart' as dialog;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +7,6 @@ import '../../utils/MLColors.dart';
 import '../../utils/MLCommon.dart';
 import '../../utils/MLImage.dart';
 import '../../utils/MLString.dart';
-import '../MLConfirmPhoneNumberScreen.dart';
 import '../home/MLDashboardScreen.dart';
 
 class MLRegistrationScreen extends StatefulWidget {
@@ -208,24 +206,24 @@ class _MLRegistrationScreenState extends State<MLRegistrationScreen> {
       } else {}
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        dialog.AwesomeDialog(
-          context: context,
-          dialogType: dialog.DialogType.INFO,
-          animType: dialog.AnimType.BOTTOMSLIDE,
-          title: 'Attend  !',
-          desc: 'The password is weak',
-          btnCancelOnPress: () {},
-          btnOkOnPress: () {},
-        ).show();
+        // dialog.AwesomeDialog(
+        //    context: context,
+        //    dialogType: dialog.DialogType.INFO,
+        //    animType: dialog.AnimType.,
+        //    title: 'Attend  !',
+        //    desc: 'The password is weak',
+        //    btnCancelOnPress: () {},
+        //    btnOkOnPress: () {},
+        //  ).show();
       } else if (e.code == 'email-already-in-use') {
-        dialog.AwesomeDialog(
-          context: context,
-          dialogType: dialog.DialogType.INFO,
-          animType: dialog.AnimType.BOTTOMSLIDE,
-          title: 'Attend  !',
-          desc: 'This Account is Already Exist',
-          btnOkOnPress: () {},
-        ).show();
+        // dialog.AwesomeDialog(
+        //   context: context,
+        //   dialogType: dialog.DialogType.INFO,
+        //   animType: dialog.AnimType.BOTTOMSLIDE,
+        //   title: 'Attend  !',
+        //   desc: 'This Account is Already Exist',
+        //   btnOkOnPress: () {},
+        // ).show();
       }
     } catch (e) {
       print(e);
@@ -238,7 +236,7 @@ class _MLRegistrationScreenState extends State<MLRegistrationScreen> {
     addUser?.doc('${user?.uid}').set({
       'email': email.text,
       'name': name.text,
-      'isUser':true,
+      'isUser': true,
       'Phone': phone.text,
       'id': user?.uid,
       'image': 'null',
