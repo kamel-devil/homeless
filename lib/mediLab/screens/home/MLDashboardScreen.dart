@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:nb_utils/nb_utils.dart';
@@ -9,6 +10,7 @@ import '../../fragments/MLCalendarFragment.dart';
 import '../../fragments/MLHomeFragment.dart';
 import '../../fragments/MLProfileFragemnt.dart';
 import '../map/map.dart';
+import '../nicu_chat/api/apis.dart';
 import '../nicu_chat/screens/home_screen.dart';
 
 class MLDashboardScreen extends StatefulWidget {
@@ -23,7 +25,29 @@ class MLDashboardScreen extends StatefulWidget {
 class _MLDashboardScreenState extends State<MLDashboardScreen> {
   int currentWidget = 0;
   bool isMaped = false;
+  @override
+  void initState() {
+    super.initState();
+    APIs.getSelfInfo();
 
+    //for updating user active status according to lifecycle events
+    //resume -- active or online
+    //pause  -- inactive or offline
+    SystemChannels.lifecycle.setMessageHandler((message) {
+      log('Message: $message');
+
+      if (APIs.auth.currentUser != null) {
+        if (message.toString().contains('resume')) {
+          APIs.updateActiveStatus(true);
+        }
+        if (message.toString().contains('pause')) {
+          APIs.updateActiveStatus(false);
+        }
+      }
+
+      return Future.value(message);
+    });
+  }
   List<Widget> widgets = [
     const MLHomeFragment(),
     const HomeChat(),
@@ -31,15 +55,6 @@ class _MLDashboardScreenState extends State<MLDashboardScreen> {
     MLProfileFragment(),
   ];
 
-  @override
-  void initState() {
-    super.initState();
-    init();
-  }
-
-  Future<void> init() async {
-    //
-  }
 
   @override
   void dispose() {
@@ -49,6 +64,7 @@ class _MLDashboardScreenState extends State<MLDashboardScreen> {
 
   @override
   Widget build(BuildContext context) {
+
     MapPageController controller = Get.put(MapPageController());
     return SafeArea(
       child: Scaffold(

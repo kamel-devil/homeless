@@ -54,18 +54,18 @@ class MLProductDetailComponentState extends State<MLProductDetailComponent> {
           Text(widget.data['info'], style: boldTextStyle(color: Colors.grey)),
           16.height,
           const Divider(thickness: 1.0),
-          8.height,
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('Overview', style: boldTextStyle()),
-              Icon(Icons.arrow_forward_ios_outlined, size: 20, color: Colors.blue.shade600),
-            ],
-          ).onTap(() {
-            MLProductMoreDetailScreen().launch(context);
-          }),
-          8.height,
-          const Divider(thickness: 1.0),
+          // 8.height,
+          // Row(
+          //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //   children: [
+          //     Text('Overview', style: boldTextStyle()),
+          //     Icon(Icons.arrow_forward_ios_outlined, size: 20, color: Colors.blue.shade600),
+          //   ],
+          // ).onTap(() {
+          //   MLProductMoreDetailScreen().launch(context);
+          // }),
+          // 8.height,
+          // const Divider(thickness: 1.0),
           8.height,
           Text('Specification', style: boldTextStyle()),
           16.height,

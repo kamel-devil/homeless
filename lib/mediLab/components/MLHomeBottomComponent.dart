@@ -51,9 +51,9 @@ class MLHomeBottomComponentState extends State<MLHomeBottomComponent> {
         Row(
           children: [
             Text(mlDepartment!, style: boldTextStyle(size: 18)).expand(),
-            Text(mlView_all!, style: secondaryTextStyle(color: mlColorBlue)),
-            4.width,
-            Icon(Icons.keyboard_arrow_right, color: mlColorBlue, size: 16),
+            // Text(mlView_all!, style: secondaryTextStyle(color: mlColorBlue)),
+            // 4.width,
+            // Icon(Icons.keyboard_arrow_right, color: mlColorBlue, size: 16),
           ],
         ).paddingOnly(left: 16, right: 16),
         10.height,
@@ -104,9 +104,9 @@ class MLHomeBottomComponentState extends State<MLHomeBottomComponent> {
         Row(
           children: [
             Text(mlTop_hospital!, style: boldTextStyle(size: 18)).expand(),
-            Text(mlView_all!, style: secondaryTextStyle(color: mlColorBlue)),
-            4.width,
-            Icon(Icons.keyboard_arrow_right, color: mlColorBlue, size: 16),
+            // Text(mlView_all!, style: secondaryTextStyle(color: mlColorBlue)),
+            // 4.width,
+            // Icon(Icons.keyboard_arrow_right, color: mlColorBlue, size: 16),
           ],
         ).paddingAll(16.0),
         FutureBuilder(

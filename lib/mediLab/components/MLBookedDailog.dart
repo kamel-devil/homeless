@@ -3,6 +3,7 @@ import 'package:flutter/rendering.dart';
 import 'package:homeless/mediLab/utils/MLColors.dart';
 import 'package:nb_utils/nb_utils.dart';
 
+import '../screens/home/MLDashboardScreen.dart';
 import '../utils/MLImage.dart';
 
 class MLBookedDialog extends StatelessWidget {
@@ -26,8 +27,11 @@ class MLBookedDialog extends StatelessWidget {
             color: mlColorDarkBlue,
             child: Text("Add to Calender", style: primaryTextStyle(color: whiteColor)),
             onTap: () {
-              finish(context);
-              finish(context);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          MLDashboardScreen()));
             },
           ),
           16.height,

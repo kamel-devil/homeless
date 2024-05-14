@@ -12,6 +12,7 @@ import 'package:image_picker/image_picker.dart';
 
 
 import '../../../../main.dart';
+import '../../auth/MLLoginScreen.dart';
 import '../api/apis.dart';
 import '../helper/dialogs.dart';
 
@@ -51,7 +52,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   Dialogs.showProgressBar(context);
 
                   await APIs.updateActiveStatus(false);
+                  await FirebaseAuth.instance.signOut();
 
+                  //print('$user');
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              MLLoginScreen()));
                   //sign out from app
                   // await APIs.auth.signOut().then((value) async {
                   //   await GoogleSignIn().signOut().then((value) {

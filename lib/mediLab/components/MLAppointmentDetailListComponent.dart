@@ -63,28 +63,23 @@ class MLAppointmentDetailListComponentState extends State<MLAppointmentDetailLis
                           Row(
                             children: [
                               Container(
-                                height: 75,
-                                width: 75,
+                                height: 100,
+                                width: 90,
                                 decoration: boxDecorationWithRoundedCorners(backgroundColor: mlColorDarkBlue, borderRadius: radius(12)),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text((e['date']), style: boldTextStyle(size: 32, color: white)),
+                                    Text((e['date']), style: boldTextStyle(size: 18, color: white)),
                                   ],
                                 ),
                               ),
                               8.width,
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      Text((e['home']), style: boldTextStyle(size: 18)),
-                                      8.height,
-                                      Text((e['address']), style: secondaryTextStyle()),
-                                    ],
-                                  ),
+                                  Text((e['home']), style: boldTextStyle(size: 18)),
+                                  8.height,
+                                  Text((e['address']),maxLines: 3,overflow: TextOverflow.ellipsis, style: secondaryTextStyle()),
                                 ],
                               ).expand(),
                             ],
@@ -95,16 +90,16 @@ class MLAppointmentDetailListComponentState extends State<MLAppointmentDetailLis
                           Row(
                             children: [
                               Text(e['time'], style: boldTextStyle(color: mlColorDarkBlue)),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text(mlAppointment_detail!, style: secondaryTextStyle(color: mlColorDarkBlue)),
-                                  4.width,
-                                  Icon(Icons.arrow_forward, color: mlPrimaryColor, size: 16),
-                                ],
-                              ).onTap(() {
-                                MLAppointmentDetailScreen().launch(context);
-                              }).expand()
+                              // Row(
+                              //   mainAxisAlignment: MainAxisAlignment.end,
+                              //   children: [
+                              //     Text(mlAppointment_detail!, style: secondaryTextStyle(color: mlColorDarkBlue)),
+                              //     4.width,
+                              //     Icon(Icons.arrow_forward, color: mlPrimaryColor, size: 16),
+                              //   ],
+                              // ).onTap(() {
+                              //   MLAppointmentDetailScreen().launch(context);
+                              // }).expand()
                             ],
                           ).paddingOnly(right: 16.0, left: 16.0),
                           16.height,

@@ -5,7 +5,7 @@ import '../components/MLProductDetailComponent.dart';
 import '../utils/MLColors.dart';
 import '../utils/MLCommon.dart';
 import '../utils/MLImage.dart';
-import 'MLAddToCartScreen.dart';
+import 'MLAddPaymentScreen.dart';
 
 class MLProductDetailScreen extends StatefulWidget {
   static String tag = '/MLProductDetailScreen';
@@ -19,23 +19,7 @@ class MLProductDetailScreen extends StatefulWidget {
 }
 
 class MLProductDetailScreenState extends State<MLProductDetailScreen> {
-  List<String?> slides = [
-    ml_ic_mediTwo,
-    ml_ic_mediThree,
-    ml_ic_mediFour,
-    ml_ic_mediFive
-  ];
-  PageController controller = PageController();
 
-  @override
-  void initState() {
-    super.initState();
-    init();
-  }
-
-  Future<void> init() async {
-    //
-  }
 
   @override
   void setState(fn) {
@@ -78,6 +62,7 @@ class MLProductDetailScreenState extends State<MLProductDetailScreen> {
                       if (index == 0) {
                         return MLProductDetailComponent(widget.data);
                       }
+                      return null;
                     },
                   ),
                 ),
@@ -87,17 +72,18 @@ class MLProductDetailScreenState extends State<MLProductDetailScreen> {
               color: mlPrimaryColor,
               width: context.width(),
               onTap: () {
-                finish(context);
-                finish(context);
-                finish(context);
-                const MLAddToCartScreen().launch(context);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            MLAddPaymentScreen()));
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Add to Cart', style: boldTextStyle(color: white)),
+                  Text('ادعم الان', style: boldTextStyle(color: white)),
                   4.width,
-                  const Icon(Icons.shopping_bag_outlined, color: white),
+                  const Icon(Icons.support, color: white),
                 ],
               ),
             ).paddingOnly(right: 16.0, left: 16.0, bottom: 8.0),

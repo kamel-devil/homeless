@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 import '../model/MLProfileCardData.dart';
+import '../screens/auth/MLLoginScreen.dart';
 import '../utils/MLDataProvider.dart';
 
 class MLProfileBottomComponent extends StatefulWidget {
@@ -36,7 +38,7 @@ class MLProfileBottomComponentState extends State<MLProfileBottomComponent> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(16.0),
+      padding: const EdgeInsets.all(16.0),
       decoration: boxDecorationWithRoundedCorners(borderRadius: radiusOnly(topRight: 32)),
       child: Column(
         children: [
@@ -48,48 +50,48 @@ class MLProfileBottomComponentState extends State<MLProfileBottomComponent> {
             ],
           ),
           16.height,
-          StaggeredGridView.countBuilder(
-            physics: NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-            crossAxisCount: 2,
-            itemCount: mlProfileData.length,
-            itemBuilder: (context, index) {
-              return Container(
-                padding: EdgeInsets.all(16),
-                decoration: boxDecorationWithRoundedCorners(
-                  backgroundColor: mlProfileData[index].color!,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Image.asset(mlProfileData[index].img!, height: 50, width: 50, fit: BoxFit.cover).cornerRadiusWithClipRRect(12.0),
-                    16.height,
-                    Row(
-                      children: [
-                        Text(mlProfileData[index].name.toString(), style: secondaryTextStyle(color: white), textAlign: TextAlign.start).expand(),
-                        Icon(Icons.arrow_forward_ios, color: white, size: 12),
-                      ],
-                    )
-                  ],
-                ),
-              ).onTap(() {
-                toast(mlProfileData[index].name);
-              });
-            },
-            staggeredTileBuilder: (index) => StaggeredTile.fit(1),
-            mainAxisSpacing: 16.0,
-            crossAxisSpacing: 16.0,
-          ),
-          16.height,
+          // StaggeredGridView.countBuilder(
+          //   physics: NeverScrollableScrollPhysics(),
+          //   shrinkWrap: true,
+          //   crossAxisCount: 2,
+          //   itemCount: mlProfileData.length,
+          //   itemBuilder: (context, index) {
+          //     return Container(
+          //       padding: EdgeInsets.all(16),
+          //       decoration: boxDecorationWithRoundedCorners(
+          //         backgroundColor: mlProfileData[index].color!,
+          //       ),
+          //       child: Column(
+          //         crossAxisAlignment: CrossAxisAlignment.start,
+          //         children: [
+          //           Image.asset(mlProfileData[index].img!, height: 50, width: 50, fit: BoxFit.cover).cornerRadiusWithClipRRect(12.0),
+          //           16.height,
+          //           Row(
+          //             children: [
+          //               Text(mlProfileData[index].name.toString(), style: secondaryTextStyle(color: white), textAlign: TextAlign.start).expand(),
+          //               Icon(Icons.arrow_forward_ios, color: white, size: 12),
+          //             ],
+          //           )
+          //         ],
+          //       ),
+          //     ).onTap(() {
+          //       toast(mlProfileData[index].name);
+          //     });
+          //   },
+          //   staggeredTileBuilder: (index) => StaggeredTile.fit(1),
+          //   mainAxisSpacing: 16.0,
+          //   crossAxisSpacing: 16.0,
+          // ),
+          // 16.height,
           Column(
             children: data.map((e) {
               return Container(
-                margin: EdgeInsets.only(bottom: 16.0),
-                padding: EdgeInsets.all(12.0),
+                margin: const EdgeInsets.only(bottom: 16.0),
+                padding: const EdgeInsets.all(12.0),
                 decoration: boxDecorationRoundedWithShadow(8),
                 child: Row(
                   children: [
-                    Icon(Icons.tab, size: 24, color: Colors.blue),
+                    const Icon(Icons.tab, size: 24, color: Colors.blue),
                     8.width,
                     Text(e.validate(), style: secondaryTextStyle(color: black, size: 16)).expand(),
                     Icon(Icons.arrow_forward_ios, color: Colors.grey[300], size: 16),
@@ -99,9 +101,36 @@ class MLProfileBottomComponentState extends State<MLProfileBottomComponent> {
                 toast(e.validate());
               });
             }).toList(),
+
           ),
+          Container(
+            margin: const EdgeInsets.only(bottom: 16.0),
+            padding: const EdgeInsets.all(12.0),
+            decoration: boxDecorationRoundedWithShadow(8),
+            child: Row(
+              children: [
+                const Icon(Icons.logout, size: 24, color: Colors.blue),
+                8.width,
+                Text('Log Out', style: secondaryTextStyle(color: black, size: 16)).expand(),
+                Icon(Icons.arrow_forward_ios, color: Colors.grey[300], size: 16),
+              ],
+            ),
+          ).onTap(() {
+            _signOut();
+          })
         ],
       ),
     );
+  }
+
+  Future<void> _signOut() async {
+    await FirebaseAuth.instance.signOut();
+
+    //print('$user');
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                MLLoginScreen()));
   }
 }

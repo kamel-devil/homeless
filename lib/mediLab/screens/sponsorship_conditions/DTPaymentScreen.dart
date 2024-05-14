@@ -4,6 +4,7 @@ import 'package:nb_utils/nb_utils.dart';
 
 import '../../components/ExpirationTextField.dart';
 import '../../components/FlipCard.dart';
+import '../home/MLDashboardScreen.dart';
 
 
 
@@ -290,7 +291,11 @@ class DTPaymentScreenState extends State<DTPaymentScreen> {
                                       alignment: Alignment.center,
                                       child: Text('Success', style: boldTextStyle(color: white)),
                                     ).onTap(() {
-
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  MLDashboardScreen()));
                                     }).expand(),
                                     16.width,
                                     Container(

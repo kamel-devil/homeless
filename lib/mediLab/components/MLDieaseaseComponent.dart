@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:nb_utils/nb_utils.dart';
 
 import '../screens/MLCommonDiseaseScreen.dart';
-import '../screens/MLSpecialistScreen.dart';
 import '../utils/MLColors.dart';
 import '../utils/MLString.dart';
 import 'MLDiseaseHListComponent.dart';
