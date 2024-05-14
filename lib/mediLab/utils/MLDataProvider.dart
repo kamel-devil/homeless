@@ -67,11 +67,11 @@ List<MLServicesData> mlServiceDataList() {
       widget: const MLOnlinePharmacyDetailScreen(
         index: 0,
       )));
-  list.add(MLServicesData(
-      title: 'الامراض',
-      icon: Icons.health_and_safety,
-      image: ml_ic_dashCovid,
-      widget: const MLDiseaseScreen()));
+  // list.add(MLServicesData(
+  //     title: 'الامراض',
+  //     icon: Icons.health_and_safety,
+  //     image: ml_ic_dashCovid,
+  //     widget: const MLDiseaseScreen()));
   list.add(MLServicesData(
       title: 'ابلاغ',
       icon: Icons.supervised_user_circle_outlined,

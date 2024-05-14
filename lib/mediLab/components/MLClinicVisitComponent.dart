@@ -96,7 +96,7 @@ class MLClinicVisitComponentState extends State<MLClinicVisitComponent> {
                                     Text((data[index]['name']),
                                         style: boldTextStyle(size: 18)),
                                     8.height,
-                                    Text('',
+                                    Text(data[index]['open'],
                                         style: secondaryTextStyle()),
                                     8.height,
                                     Text((data[index]['phone']),

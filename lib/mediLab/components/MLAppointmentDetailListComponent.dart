@@ -63,13 +63,13 @@ class MLAppointmentDetailListComponentState extends State<MLAppointmentDetailLis
                           Row(
                             children: [
                               Container(
-                                height: 75,
-                                width: 75,
+                                height: 100,
+                                width: 90,
                                 decoration: boxDecorationWithRoundedCorners(backgroundColor: mlColorDarkBlue, borderRadius: radius(12)),
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text((e['date']), style: boldTextStyle(size: 32, color: white)),
+                                    Text((e['date']), style: boldTextStyle(size: 18, color: white)),
                                   ],
                                 ),
                               ),
