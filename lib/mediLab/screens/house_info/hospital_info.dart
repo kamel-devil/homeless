@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:path/path.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -175,13 +176,17 @@ class _HospitalInfoState extends State<HospitalInfo> {
                                           ),
                                         ),
                                         const SizedBox(
-                                          width: 10,
+                                          width: 5,
                                         ),
-                                        Text(
-                                          data['phone'],
-                                          style: const TextStyle(
-                                              fontSize: 20,
-                                              color: Colors.black),
+                                        Flexible(
+                                          child: Text(
+                                            data['phone'],
+                                            maxLines: 2,
+                                            overflow: TextOverflow.ellipsis,
+                                            style: const TextStyle(
+                                                fontSize: 20,
+                                                color: Colors.black),
+                                          ),
                                         ),
                                       ],
                                     ),
