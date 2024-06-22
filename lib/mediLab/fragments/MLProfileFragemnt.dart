@@ -107,6 +107,7 @@ class MLProfileFragmentState extends State<MLProfileFragment> {
                   if (index == 0) {
                     return MLProfileBottomComponent();
                   }
+                  return null;
                 },
               ),
             ),

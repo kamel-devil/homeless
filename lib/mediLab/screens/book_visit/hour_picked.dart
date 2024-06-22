@@ -32,7 +32,7 @@ class _CupertState extends State<Cupert> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text(
-              'اختار اليوم',
+              'اختار التوقيت',
               style: TextStyle(fontWeight: FontWeight.w900, fontSize: 25),
             ),
             15.height,

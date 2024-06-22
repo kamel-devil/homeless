@@ -31,7 +31,7 @@ class _WidgetPageState extends State<WidgetPage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              'اختار التوقيت',
+              'اختار اليوم',
               style: TextStyle(fontWeight: FontWeight.w900, fontSize: 25),
             ),
             15.height,
