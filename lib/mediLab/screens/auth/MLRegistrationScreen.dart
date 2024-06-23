@@ -242,6 +242,7 @@ class _MLRegistrationScreenState extends State<MLRegistrationScreen> {
       'image': 'null',
       'created_at': time,
       'is_online': false,
+      'isAccept':true,
       'last_active': time,
       'push_token': '',
       'about': 'Hallo'
