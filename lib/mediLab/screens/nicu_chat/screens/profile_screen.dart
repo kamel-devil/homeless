@@ -266,7 +266,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Navigator.pop(context);
                         }
                       },
-                      child: Image.asset('images/add_image.png')),
+                      child: Icon(Icons.photo,size: 60)),
 
                   //take picture from camera button
                   ElevatedButton(
@@ -291,7 +291,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           Navigator.pop(context);
                         }
                       },
-                      child: Image.asset('images/camera.png')),
+                      child: Icon(Icons.camera,size: 60,)),
                 ],
               )
             ],
